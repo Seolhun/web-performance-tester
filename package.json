@@ -8,8 +8,7 @@
     "lh": "yarn build && node ./dist/main.js",
     "build": "tsc",
     "prebuild": "rm -rf dist",
-    "release": "yarn build && yarn publish --access public",
-    "release:beta": "yarn build && yarn publish --tag beta --access public"
+    "release": "yarn build && yarn publish --access public"
   },
   "main": "dist/index.js",
   "files": [

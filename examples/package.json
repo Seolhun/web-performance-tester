@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "test": "yarn build && node ./dist/main.js",
+    "test": "yarn build && node ./dist/index.js",
     "build": "tsc",
     "prebuild": "rm -rf dist"
   },
@@ -16,6 +16,6 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@seolhun/web-performance-tester": "^1.0.3"
+    "@seolhun/web-performance-tester": "^1.0.4"
   }
 }
