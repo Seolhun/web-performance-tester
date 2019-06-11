@@ -2,13 +2,14 @@
   "name": "@seolhun/web-performance-tester",
   "author": "Seolhun",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "scripts": {
     "test": "jest --verbose --runInBand",
     "lh": "yarn build && node ./dist/main.js",
     "build": "tsc",
     "prebuild": "rm -rf dist",
-    "release": "yarn build && npm publish --access public"
+    "release": "yarn build && yarn publish --access public",
+    "release2": "yarn build && npm publish --access public"
   },
   "main": "dist/index.js",
   "dependencies": {
