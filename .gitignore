@@ -6,4 +6,6 @@ node_modules
 # Artifacts
 dist
 
+# Reports
 reports/**
+examples/reports/**
