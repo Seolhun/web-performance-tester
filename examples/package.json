@@ -16,6 +16,6 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@seolhun/web-performance-tester": "^1.0.0"
+    "@seolhun/web-performance-tester": "^1.0.3"
   }
 }
