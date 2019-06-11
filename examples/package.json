@@ -1,0 +1,21 @@
+{
+  "name": "@seolhun/web-performance-tester-examples",
+  "author": "Seolhun",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "yarn build && node ./dist/main.js",
+    "build": "tsc",
+    "prebuild": "rm -rf dist"
+  },
+  "main": "dist/index.js",
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "tslint": "^5.17.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "@seolhun/web-performance-tester": "^1.0.0"
+  }
+}

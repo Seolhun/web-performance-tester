@@ -1,10 +1,7 @@
-import fs from 'fs';
+import WebPerformanceTester from './WebPerformanceTester';
 
-// setting
+export {
+  WebPerformanceTester,
+};
 
-//
-
-// Search & Read outer configuration files
-
-
-// Search Route Files
+export default WebPerformanceTester;

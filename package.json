@@ -1,15 +1,18 @@
 {
-  "private": true,
-  "name": "web-performance-tester",
+  "name": "@seolhun/web-performance-tester",
   "author": "Seolhun",
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest --verbose --runInBand"
+    "test": "jest --verbose --runInBand",
+    "lh": "yarn build && node ./dist/main.js",
+    "build": "tsc",
+    "prebuild": "rm -rf dist",
+    "release": "yarn build && npm publish --access public"
   },
   "main": "dist/index.js",
   "dependencies": {
-    "jest": "^24.8.0",
+    "dayjs": "^1.8.14",
     "lighthouse": "^5.1.0",
     "puppeteer": "^1.17.0"
   },
@@ -18,8 +21,11 @@
     "@types/puppeteer": "^1.12.4",
     "chalk": "^2.4.2",
     "chrome-launcher": "^0.10.7",
+    "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.2.0",
     "tslint": "^5.17.0",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.5.1",
