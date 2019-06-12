@@ -7,8 +7,11 @@ This is an example of using the global setup/teardown apis alone with the async 
 - Simple and Powerful testing flow with the configuration
   - Setting > Auditing > Testing > Reporting
 
-
-![Test Result](./.github/images/screenshot.png)
+## About Lighthouse contents
+- [Accessibility](https://github.com/Seolhun/web-performance-tester/blob/master/.content/Accessibility.md)
+- [BestPractices](https://github.com/Seolhun/web-performance-tester/blob/master/.content/BestPractices.md)
+- [Performance](https://github.com/Seolhun/web-performance-tester/blob/master/.content/Performance.md)
+- [ProgressiveWeb](https://github.com/Seolhun/web-performance-tester/blob/master/.content/ProgressiveWeb.md)
 
 ## Architectures
 
@@ -65,3 +68,4 @@ yarn lh
 ```bash
 yarn test
 ```
+
