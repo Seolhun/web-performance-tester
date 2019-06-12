@@ -37,10 +37,10 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@seolhun/web-performance-tester@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@seolhun/web-performance-tester/-/web-performance-tester-1.0.6.tgz#6ee01cf49cf2f3a986ae0631f3db05b17936bd6a"
-  integrity sha512-fDsVDgM1Otk+nuWabZ2QpUjuyA+gGvUs5K6K3NgnbLxnTS/R3dzvG4ffLeuY2hmE5RmnPVkXF6Parg9ZnQEZMg==
+"@seolhun/web-performance-tester@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@seolhun/web-performance-tester/-/web-performance-tester-1.0.7.tgz#ad229391f7d9424908dcdb232591c23b8f4ba4a2"
+  integrity sha512-l9jwCbs3YsN1S8bZziJzNNedszFQMzvJH3/B8ypp0WJ4n0EytW30/mCJfKxAeXzm71oUM18OOMga342bM86HzA==
   dependencies:
     dayjs "^1.8.14"
     lighthouse "^5.1.0"
