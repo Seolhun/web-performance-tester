@@ -36,7 +36,7 @@ Reporter make and send analytics report as CSV, JSON or other ways.
   "subRoutes": [],                          // default : []
   "timeout": 100000,                        // default : 100000
   "options": {
-    "chromeFlags": ["--show-paint-rects"],  // default : ["--show-paint-rects"]
+    "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--show-paint-rects"]  - ["--headless", "--disable-gpu"]
     "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
     "output": "html",                       // default : "html"         - json, html, csv
     "outputPath": "reports",                // default : "reports"

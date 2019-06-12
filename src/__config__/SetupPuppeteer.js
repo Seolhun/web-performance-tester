@@ -11,7 +11,6 @@ const request = require('request')
 const DIR = path.join(os.tmpdir(), 'jest_puppeteer_global_setup')
 
 const OPTIONS = {
-  //chromeFlags: ['--headless'],
   output: 'json'
 };
 
