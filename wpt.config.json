@@ -1,6 +1,10 @@
 {
-  "baseUrl": "https://github.com/Seolhun",
-  "subRoutes": [],
+  "baseUrl": "https://rainist.com",
+  "subRoutes": [
+    "/banksalad",
+    "/members",
+    "/recruit"
+  ],
   "timeout": 100000,
   "options": {
     "chromeFlags": ["--show-paint-rects"],

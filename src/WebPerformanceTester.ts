@@ -22,28 +22,68 @@ class WebPerformanceTester {
     this.Reporter = new ReporterBuilder(this.Config.getConfig());
   }
 
-  launchChromeAndRunLighthouse = (url: string, options: WTPLighthouseConfigProps, config = null) => {
-    return chromeLauncher.launch({ chromeFlags: options.chromeFlags }).then((chrome: any) => {
-      options.port = chrome.port;
-      return lighthouse(url, options, config).then((results: any) => {
-        return chrome.kill().then(() => results);
-      });
-    });
+  async launchChromeAndRunLighthouse(baseUrl: string, options: WTPLighthouseConfigProps, config = null) {
+    const {
+      subRoutes,
+    } = this.Config.getConfig();
+
+    const chrome = await chromeLauncher.launch({ chromeFlags: options.chromeFlags });
+    options.port = chrome.port;
+
+    await this.runLighthouse(baseUrl, options, config);
+    const isDone = await this.runSubRoutes(subRoutes, options, config);
+    if (isDone) {
+      chrome.kill();
+    }
   }
 
-  async run() {
-    const config = this.Config.getConfig();
+  async runLighthouse(url: string, options: WTPLighthouseConfigProps, config = null) {
+    const results = await lighthouse(url, options, config);
+    this.createLighthouseReport(results);
+    return true;
+  }
+
+  async runSubRoutes(subRoutes: string[] | undefined, options: WTPLighthouseConfigProps, config = null, currentIndex = 0): Promise<boolean> {
+    if (!Array.isArray(subRoutes)) {
+      return await true;
+    }
+
+    if (subRoutes.length - 1 < currentIndex) {
+      return await true;
+    }
+
+    const {
+      baseUrl,
+    } = this.Config.getConfig();
+
+    const route = subRoutes[currentIndex];
+    const targetUrl = `${baseUrl}${route}`;
+    const result = await this.runLighthouse(targetUrl, options, config);
+    if (result) {
+      return await this.runSubRoutes(subRoutes, options, config, currentIndex + 1);
+    }
+    return await true;
+  }
+
+  createLighthouseReport(lighthouseResult: any) {
     const auditedFields = this.Auditer.getTestFields();
 
-    const lighthouse = await this.launchChromeAndRunLighthouse(config.baseUrl, config.options || {});
-
     console.log(chalk.yellow('=*=*=*= SaveReport Start =*=*=*='));
-    this.Reporter.saveReport(lighthouse.report);
+    this.Reporter.saveReport(lighthouseResult.report);
     console.log(chalk.yellow('=*=*=*= SaveReport End =*=*=*='));
 
     console.log(chalk.yellow('=*=*=*= CreateCustomReport Start =*=*=*='));
-    this.Reporter.createCustomReport(lighthouse.lhr.audits, auditedFields);
+    this.Reporter.createCustomReport(lighthouseResult.lhr.audits, auditedFields);
     console.log(chalk.yellow('=*=*=*= CreateCustomReport End =*=*=*='));
+  }
+
+  run() {
+    const {
+      baseUrl,
+      options,
+    } = this.Config.getConfig();
+
+    this.launchChromeAndRunLighthouse(baseUrl, options || {});
   }
 }
 
