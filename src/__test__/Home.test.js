@@ -9,7 +9,7 @@ const {
   options,
 } = WTP.Config.getConfig();
 
-describe('Rainist Homepage', () => {
+describe('Naver Homepage', () => {
   console.error('@@@', options);
   let page, lighthouseOptions = {
     ...options,
@@ -17,13 +17,13 @@ describe('Rainist Homepage', () => {
 
   const auditedFields = WTP.Auditer.getTestFields();
 
-	beforeAll(async () => {
-		page = await global.__BROWSER__.newPage();
+  beforeAll(async () => {
+    page = await global.__BROWSER__.newPage();
     lighthouseOptions.port = global.__PORT__;
-	});
+  });
 
-	afterAll(async () => {
-		await page.close()
+  afterAll(async () => {
+    await page.close()
   });
 
   if (Array.isArray(subRoutes) && subRoutes.length) {
