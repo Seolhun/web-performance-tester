@@ -36,7 +36,10 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 // wtp.config.json
 {
   "baseUrl": "https://github.com/Seolhun",  // Required
-  "subRoutes": [],                          // default : []
+  "subRoutes": [
+    "/localize-components",
+    "/vue-type-graphql-example",
+  ],                                        // default : [] 
   "timeout": 100000,                        // default : 100000
   "options": {
     "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--show-paint-rects"]  - ["--headless", "--disable-gpu"]
