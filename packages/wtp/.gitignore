@@ -1,3 +1,4 @@
+# Node
 node_modules
 
 # Jest
@@ -8,4 +9,3 @@ dist
 
 # Reports
 reports/**
-examples/reports/**

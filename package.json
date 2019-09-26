@@ -14,7 +14,6 @@
   "bugs": {
     "url": "https://github.com/Seolhun/web-performance-tester/issues"
   },
-  "version": "1.0.7",
   "scripts": {
     "test": "jest --verbose --runInBand",
     "lh": "yarn build && cd packages/examples && yarn start",
