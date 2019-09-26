@@ -26,5 +26,6 @@ All notable changes to this project will be documented in this file.
 
 #### 20190928
 
+Chage to Mono repo with Lerna - ([Pull Request Link](https://github.com/Seolhun/web-performance-tester/pull/5))
 
 
