@@ -2,7 +2,7 @@
   "baseUrl": "https://github.com/Seolhun",
   "subRoutes": [
     "/localize-components",
-    "/vue-type-graphql-example",
+    "/vue-type-graphql-example"
   ],
   "timeout": 100000,
   "options": {
