@@ -1,0 +1,27 @@
+{
+  "projectName": "web-performance-tester",
+  "projectOwner": "Seolhun",
+  "repoType": "github",
+  "repoHost": "https://github.com/Seolhun/web-performance-tester",
+  "badgeTemplate": "",
+  "files": [
+    "README.md",
+    "CONTRIBUTING.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "Seolhun",
+      "name": "Seol Hun",
+      "avatar_url": "https://avatars.githubusercontent.com/Seolhun",
+      "profile": "https://github.com/Seolhun",
+      "contributions": [
+        "code",
+        "doc",
+        "bug",
+        "review"
+      ]
+    },
+  ]
+}

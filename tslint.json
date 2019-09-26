@@ -20,6 +20,7 @@
         400
       ]
     },
+    "align": false,
     "member-access": false,
     "member-ordering": false,
     "no-bitwise": false,
@@ -59,8 +60,8 @@
   "rulesDirectory": [],
   "linterOptions": {
     "exclude": [
-        "build/*",
-        "config/*"
+      "build/*",
+      "config/*"
     ]
   }
 }
