@@ -6,7 +6,7 @@ export interface WTPConfigProps {
 
   subRoutes?: string[];
   timeout?: number;
-  options?: WTPLighthouseConfigProps,
+  options?: WTPLighthouseConfigProps;
   builder?: BuilderConfigProps;
   auditer?: AuditerConfigProps;
   tester?: TesterConfigProps;

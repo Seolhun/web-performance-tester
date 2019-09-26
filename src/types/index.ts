@@ -25,4 +25,4 @@ export {
   OutputType,
   WTPLighthouseConfigProps,
   LighthouseFieldProps,
-}
+};

@@ -8,7 +8,6 @@ class LighthouseFieldResponse implements LighthouseFieldProps {
   scoreDisplayMode: string;
   numericValue: number | string;
 
-
   constructor(props: LighthouseFieldProps) {
     this.id = props.id;
     this.title = props.title;

@@ -1,6 +1,5 @@
 import { WTPConfigProps } from '../types';
 import WTPLighthouseConfig from './WTPLighthouseConfig';
-;
 
 class WTPConfig implements WTPConfigProps {
   baseUrl: string;

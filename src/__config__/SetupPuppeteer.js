@@ -1,17 +1,17 @@
-const chalk = require('chalk')
-const puppeteer = require('puppeteer')
-const fs = require('fs')
-const mkdirp = require('mkdirp')
-const os = require('os')
-const path = require('path')
-const chromeLauncher = require('chrome-launcher')
-const util = require('util')
-const request = require('request')
+const chalk = require('chalk');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
+const os = require('os');
+const path = require('path');
+const chromeLauncher = require('chrome-launcher');
+const util = require('util');
+const request = require('request');
 
-const DIR = path.join(os.tmpdir(), 'jest_puppeteer_global_setup')
+const DIR = path.join(os.tmpdir(), 'jest_puppeteer_global_setup');
 
 const OPTIONS = {
-  output: 'json'
+  output: 'json',
 };
 
 module.exports = async function() {
@@ -24,7 +24,7 @@ module.exports = async function() {
   // Puppeteer Connection
   const resp = await util.promisify(request)(`http://localhost:${OPTIONS.port}/json/version`);
   const { webSocketDebuggerUrl } = JSON.parse(resp.body);
-  const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
+  const browser = await puppeteer.connect({ browserWSEndpoint: webSocketDebuggerUrl });
 
   // This global is not available inside tests but only in global teardown
   global.__BROWSER_GLOBAL__ = browser;
@@ -47,4 +47,4 @@ module.exports = async function() {
   // await page.click('.submit-btn')
   // await page.goto('https://google.com')
   // await page.close();
-}
+};

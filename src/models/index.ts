@@ -6,7 +6,7 @@ export {
   WTPConfig,
   WTPLighthouseConfig,
   LighthouseFieldResponse,
-}
+};
 
 export default {
   WTPConfig,
