@@ -1,7 +1,6 @@
 {
   "private": true,
   "license": "MIT",
-  "name": "@seolhun/web-performance-tester",
   "author": {
     "name": "Seolhun",
     "email": "shun10116@gmail.com",
@@ -18,7 +17,7 @@
   "version": "1.0.7",
   "scripts": {
     "test": "jest --verbose --runInBand",
-    "lh": "yarn build && node ./dist/main.js",
+    "lh": "yarn build && cd packages/examples && yarn start",
     "build": "yarn clean && yarn bs && lerna exec yarn build",
     "clean": "lerna clean --yes",
     "deploy:ex": "surge packages/examples/dist/ http://localize-components-examples.surge.sh",

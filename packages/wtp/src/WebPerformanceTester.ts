@@ -3,11 +3,15 @@ const chromeLauncher = require('chrome-launcher');
 
 import chalk from 'chalk';
 
-import ConfigurationBuilder from './builders/ConfigurationBuilder';
-import AuditerBuilder from './builders/AuditerBuilder';
-import TesterBuilder from './builders/TesterBuilder';
-import ReporterBuilder from './builders/ReporterBuilder';
-import { WTPLighthouseConfigProps } from './types';
+import {
+  ConfigurationBuilder,
+  AuditerBuilder,
+  TesterBuilder,
+  ReporterBuilder,
+} from '@seolhun/web-performance-tester-builder';
+import {
+  WTPLighthouseConfigProps,
+} from '@seolhun/web-performance-tester-types';
 
 class WebPerformanceTester {
   Config: ConfigurationBuilder;
