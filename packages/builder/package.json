@@ -2,7 +2,7 @@
   "name": "@seolhun/web-performance-tester-builder",
   "author": "Seolhun",
   "license": "MIT",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc"
@@ -12,9 +12,9 @@
     "dist"
   ],
   "dependencies": {
-    "@seolhun/web-performance-tester-models": "^1.0.7",
-    "@seolhun/web-performance-tester-types": "^1.0.7",
-    "@seolhun/web-performance-tester-utils": "^1.0.7"
+    "@seolhun/web-performance-tester-models": "^1.0.8",
+    "@seolhun/web-performance-tester-types": "^1.0.8",
+    "@seolhun/web-performance-tester-utils": "^1.0.8"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",

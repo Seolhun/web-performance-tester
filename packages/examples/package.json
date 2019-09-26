@@ -2,7 +2,7 @@
   "name": "@seolhun/web-performance-tester-examples",
   "author": "Seolhun",
   "license": "MIT",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "build": "tsc",
     "start": "yarn build && node dist/index.js"
@@ -12,7 +12,7 @@
     "dist"
   ],
   "dependencies": {
-    "@seolhun/web-performance-tester": "^1.0.7"
+    "@seolhun/web-performance-tester": "^1.0.8"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",

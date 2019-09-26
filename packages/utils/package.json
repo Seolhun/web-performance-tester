@@ -2,7 +2,7 @@
   "name": "@seolhun/web-performance-tester-utils",
   "author": "Seolhun",
   "license": "MIT",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc"
