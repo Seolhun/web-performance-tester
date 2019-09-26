@@ -30,11 +30,12 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 
 ## Config Options
 
-> Important configuration json files
+### Javascript - Recommended
 
 ```js
-// wtp.config.json
-{
+// wtp.config.js
+const config = (defaultConfig) => {
+  ...defaultConfig,
   "baseUrl": "https://github.com/Seolhun",  // Required
   "subRoutes": [
     "/localize-components",
@@ -52,6 +53,30 @@ Reporter make and send analytics report as CSV, JSON or other ways.
   "auditer": {},                            // default : {}
   "tester": {},                             // default : {}
   "reporter": {}                            // default : {}
+}
+```
+
+
+### JSON
+
+> Important configuration json can't customize hooks like js
+
+```json
+// wtp.config.json
+{
+  "baseUrl": "https://github.com/Seolhun",  // Required
+  "subRoutes": [
+    "/localize-components",
+    "/vue-type-graphql-example",
+  ],                                        // default : [] 
+  "timeout": 100000,                        // default : 100000
+  "options": {
+    "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--show-paint-rects"]  - ["--headless", "--disable-gpu"]
+    "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
+    "output": "html",                       // default : "html"         - json, html, csv
+    "outputPath": "reports",                // default : "reports"
+    "port": 8080                            // default : 8080
+  },
 }
 ```
 
