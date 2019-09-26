@@ -1,6 +1,6 @@
-import { LighthouseFieldProps } from '../types';
+import { LighthouseFieldProps } from '@seolhun/web-performance-tester-types';
 
-class LighthouseFieldResponse implements LighthouseFieldProps {
+export class LighthouseFieldResponse implements LighthouseFieldProps {
   id: string;
   title: string;
   description: string;

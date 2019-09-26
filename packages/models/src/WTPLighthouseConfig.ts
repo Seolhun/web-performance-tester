@@ -1,4 +1,4 @@
-import { WTPLighthouseConfigProps } from '../types';
+import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-types';
 
 // port	                  Only specifies which port to use, Chrome is not launched for you.
 // chromeFlags	          Ignored, Chrome is not launched for you.

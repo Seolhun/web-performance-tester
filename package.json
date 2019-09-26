@@ -58,5 +58,15 @@
     "puppeteer",
     "lighthouse",
     "typescript"
-  ]
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
 }

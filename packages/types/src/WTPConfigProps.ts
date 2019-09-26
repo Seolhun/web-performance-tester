@@ -1,5 +1,5 @@
-import { TestTypes } from '../constants';
-import { WTPLighthouseConfigProps } from '../types';
+import { TestTypes } from './constants';
+import { WTPLighthouseConfigProps } from './WTPLighthouseConfigProps';
 
 export interface WTPConfigProps {
   baseUrl: string;

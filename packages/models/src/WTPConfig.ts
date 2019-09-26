@@ -1,15 +1,16 @@
-import { WTPConfigProps } from '../types';
+import { WTPConfigProps } from '@seolhun/web-performance-tester-types';
+
 import WTPLighthouseConfig from './WTPLighthouseConfig';
 
 class WTPConfig implements WTPConfigProps {
   baseUrl: string;
   subRoutes: string[] | undefined;
   timeout: number | undefined;
-  options: import('../types').WTPLighthouseConfigProps | undefined;
-  builder: import('../types').BuilderConfigProps | undefined;
-  auditer: import('../types').AuditerConfigProps | undefined;
-  tester: import('../types').TesterConfigProps | undefined;
-  reporter: import('../types').ReporterConfigProps | undefined;
+  options: import('@seolhun/web-performance-tester-types').WTPLighthouseConfigProps | undefined;
+  builder: import('@seolhun/web-performance-tester-types').BuilderConfigProps | undefined;
+  auditer: import('@seolhun/web-performance-tester-types').AuditerConfigProps | undefined;
+  tester: import('@seolhun/web-performance-tester-types').TesterConfigProps | undefined;
+  reporter: import('@seolhun/web-performance-tester-types').ReporterConfigProps | undefined;
 
   constructor(props: WTPConfigProps) {
     this.baseUrl = props.baseUrl;

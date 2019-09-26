@@ -1,0 +1,11 @@
+node_modules
+
+# Jest
+.cache
+
+# Artifacts
+dist
+
+# Reports
+reports/**
+examples/reports/**
