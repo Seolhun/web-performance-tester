@@ -8,7 +8,11 @@
     "lh": "yarn build && node ./dist/main.js",
     "build": "tsc",
     "prebuild": "rm -rf dist",
-    "release": "yarn build && yarn publish --access public"
+    "release": "yarn build && yarn publish --access public",
+    "lint": "tslint --project -p tsconfig.json 'packages/**/src/**/*.{ts,tsx}'",
+    "lint:fix": "tslint --fix --project 'packages/**/*.{ts,tsx}'",
+    "prettier": "prettier --write 'packages/**/src/**/*.{js,jsx,ts,tsx,scss,md}'",
+    "fix": "yarn prettier && yarn lint:fix -p tsconfig.json"
   },
   "main": "dist/index.js",
   "files": [
