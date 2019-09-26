@@ -61,7 +61,7 @@ const config = (defaultConfig) => {
 
 > Important configuration json can't customize hooks like js
 
-```json
+```js
 // wtp.config.json
 {
   "baseUrl": "https://github.com/Seolhun",  // Required
