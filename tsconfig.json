@@ -5,8 +5,7 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["ES5", "ES6", "ES7", "ES2017", "dom"],
-    "jsx": "react",
+    "lib": ["ES5", "ES6", "ES7", "dom"],
     "allowJs": true,
     /* Strict Type-Checking Options */
     "noImplicitAny": true,
@@ -24,12 +23,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitOnError": true,
-    "pretty": true /* Stylize errors and messages using color and context. */,
     "traceResolution": false /* Report module resolution log messages. */,
     // Customized
     "declaration": true,
-    "outDir": "dist",
-    "declarationDir": "dist"
+    "outDir": "dist"
   },
   "exclude": [".vscode", "node_modules/**", "__test__/**"]
 }
