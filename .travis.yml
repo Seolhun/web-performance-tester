@@ -1,0 +1,32 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - "10"
+
+# install:
+#   - . bin/setup_puppeteer.sh
+
+script:
+  - npm run bs
+  - npm run lint
+  - npm run build
+  - npm run test
+
+cache:
+  npm: true
+  directories:
+    - "node_modules"
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email:
+    - shun10116@gmail.com
+  slack:
+    rooms:
+      - hi-cordworkspace:EC6Q4SIRTddzUEE0rMDXrSl6#dev-travis
