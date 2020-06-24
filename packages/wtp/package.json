@@ -2,7 +2,7 @@
   "name": "@seolhun/web-performance-tester",
   "author": "Seolhun",
   "license": "MIT",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "scripts": {
     "prettier": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -15,8 +15,8 @@
     "dist"
   ],
   "dependencies": {
-    "@seolhun/web-performance-tester-builder": "^1.0.8",
-    "@seolhun/web-performance-tester-models": "^1.0.8"
+    "@seolhun/web-performance-tester-builder": "^1.1.0",
+    "@seolhun/web-performance-tester-models": "^1.1.0"
   },
   "repository": {
     "type": "git",
