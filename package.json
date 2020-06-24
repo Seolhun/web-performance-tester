@@ -31,7 +31,7 @@
     "release": "lerna publish",
     "prerelease": "lerna publish from-git",
     "release:patch": "lerna publish patch -y",
-    "lh": "yarn build && cd packages/examples && yarn start"
+    "lh": "npm run build && cd packages/examples && npm run start"
   },
   "dependencies": {
     "dayjs": "^1.8.28",

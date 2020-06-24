@@ -7,9 +7,8 @@
     "prettier": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
-    "prebuild": "rm -rf dist",
     "build": "tsc",
-    "start": "yarn build && node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "test": "jest"
   },
   "main": "dist/index.js",
