@@ -1,6 +1,6 @@
 {
-  "private": true,
   "license": "MIT",
+  "version": "1.0.8",
   "author": {
     "name": "Seolhun",
     "email": "shun10116@gmail.com",
@@ -10,49 +10,74 @@
     "type": "git",
     "url": "git+https://github.com/Seolhun/web-performance-tester"
   },
+  "keywords": [
+    "puppeteer",
+    "lighthouse",
+    "typescript"
+  ],
   "homepage": "https://github.com/Seolhun/web-performance-tester#readme",
   "bugs": {
     "url": "https://github.com/Seolhun/web-performance-tester/issues"
   },
   "scripts": {
-    "test": "jest --verbose --runInBand",
-    "lh": "yarn build && cd packages/examples && yarn start",
-    "build": "yarn clean && yarn bs && lerna exec yarn build",
-    "clean": "lerna clean --yes",
+    "clean": "lerna clean -y",
+    "clear": "lerna run clear",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "prettier": "lerna run prettier",
+    "bs": "lerna bootstrap --force-local",
+    "version:cli": "lerna version --amend -m 'chore(release): publish %s'",
     "release": "lerna publish",
     "prerelease": "lerna publish from-git",
     "release:patch": "lerna publish patch -y",
-    "bs": "lerna bootstrap",
-    "lint": "tslint --project -p tsconfig.json 'packages/**/src/**/*.{ts,tsx}'",
-    "lint:fix": "tslint --fix --project 'packages/**/*.{ts,tsx}'",
-    "prettier": "prettier --write 'packages/**/src/**/*.{js,jsx,ts,tsx,scss,md}'",
-    "fix": "yarn prettier && yarn lint:fix -p tsconfig.json"
+    "lh": "yarn build && cd packages/examples && yarn start"
   },
-  "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "dayjs": "^1.8.14",
     "lighthouse": "^5.1.0",
     "puppeteer": "^1.17.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@types/puppeteer": "^1.12.4",
-    "chalk": "^2.4.2",
-    "chrome-launcher": "^0.10.7",
-    "lerna": "^3.4.3",
-    "prettier": "^1.18.2",
-    "tslint": "^5.17.0",
-    "tslint-config-airbnb": "^5.11.1",
-    "typescript": "^3.5.1"
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-classes": "^7.9.5",
+    "@babel/plugin-transform-destructuring": "^7.9.5",
+    "@babel/plugin-transform-literals": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/plugin-transform-spread": "^7.8.3",
+    "@babel/plugin-transform-typescript": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@rollup/plugin-babel": "^5.0.3",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.1",
+    "@types/jest": "^24.9.1",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-eslint-plugin": "^2.2.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.0.1",
+    "jest-config": "^26.0.1",
+    "lerna": "^3.22.1",
+    "prettier": "^2.0.5",
+    "rollup": "^1.32.1",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
   },
-  "keywords": [
-    "puppeteer",
-    "lighthouse",
-    "typescript"
-  ],
   "workspaces": [
     "packages/*"
   ],
