@@ -6,9 +6,9 @@ import {
   Performances,
   PWA,
   SEO,
-} from '@seolhun/web-performance-tester-types';
+} from '@seolhun/web-performance-tester-models';
 
-export interface AuditerBuilderProps {}
+interface AuditerBuilderProps {}
 
 class AuditerBuilder implements AuditerBuilderProps {
   getTestListByType = (type: TestType) => {
@@ -40,4 +40,5 @@ class AuditerBuilder implements AuditerBuilderProps {
   }
 }
 
+export { AuditerBuilder, AuditerBuilderProps };
 export default AuditerBuilder;

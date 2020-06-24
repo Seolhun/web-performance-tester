@@ -1,9 +1,6 @@
 {
   "baseUrl": "https://github.com/Seolhun",
-  "subRoutes": [
-    "/localize-components",
-    "/vue-type-graphql-example"
-  ],
+  "subRoutes": ["/web-performance-tester", "/localize-components"],
   "timeout": 100000,
   "options": {
     "chromeFlags": ["--show-paint-rects"],

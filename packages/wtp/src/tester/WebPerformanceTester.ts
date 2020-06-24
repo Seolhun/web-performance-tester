@@ -9,7 +9,7 @@ import {
   TesterBuilder,
   ReporterBuilder,
 } from '@seolhun/web-performance-tester-builder';
-import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-types';
+import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-models';
 
 class WebPerformanceTester {
   Config: ConfigurationBuilder;
@@ -91,4 +91,5 @@ class WebPerformanceTester {
   }
 }
 
+export { WebPerformanceTester };
 export default WebPerformanceTester;

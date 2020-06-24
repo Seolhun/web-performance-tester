@@ -1,4 +1,4 @@
-export enum TestTypes {
+enum TestTypes {
   ACCESSIBILITY,
   BEST_PRACTICES,
   PERFORMANCES,
@@ -6,7 +6,7 @@ export enum TestTypes {
   SEO,
 }
 
-export enum Accessibility {
+enum Accessibility {
   ACCESSKEYS = 'accesskeys',
   ARIA_ALLOWED_ATTR = 'aria-allowed-attr',
   ARIA_REQUIRED_ATTR = 'aria-required-attr',
@@ -55,7 +55,7 @@ export enum Accessibility {
   VISUAL_ORDER_FOLLOWS_DOM = 'visual-order-follows-dom',
 }
 
-export enum BestPractices {
+enum BestPractices {
   APPCACHE_MANIFEST = 'appcache-manifest',
   DEPRECATIONS = 'deprecations',
   DOCTYPE = 'doctype',
@@ -72,7 +72,7 @@ export enum BestPractices {
   USES_PASSIVE_EVENT_LISTENERS = 'uses-passive-event-listeners',
 }
 
-export enum Performances {
+enum Performances {
   BOOTUP_TIME = 'bootup-time',
   CRITICAL_REQUEST_CHAINS = 'critical-request-chains',
   DIAGNOSTICS = 'diagnostics',
@@ -114,7 +114,7 @@ export enum Performances {
   USES_WEBP_IMAGES = 'uses-webp-images',
 }
 
-export enum PWA {
+enum PWA {
   APPLE_TOUCH_ICON = 'apple-touch-icon',
   CONTENT_WIDTH = 'content-width',
   INSTALLABLE_MANIFEST = 'installable-manifest',
@@ -132,7 +132,7 @@ export enum PWA {
   WORKS_OFFLINE = 'works-offline',
 }
 
-export enum SEO {
+enum SEO {
   CANONICAL = 'canonical',
   DOCUMENT_TITLE = 'document-title',
   FONT_SIZE = 'font-size',
@@ -148,3 +148,5 @@ export enum SEO {
   TAP_TARGETS = 'tap-targets',
   VIEWPORT = 'viewport',
 }
+
+export { TestTypes, Accessibility, BestPractices, Performances, PWA, SEO };

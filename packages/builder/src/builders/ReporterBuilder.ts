@@ -2,11 +2,9 @@ import fs from 'fs';
 
 import dayjs from 'dayjs';
 
-import { LighthouseFieldResponse } from '@seolhun/web-performance-tester-models';
-import { OutputType } from '@seolhun/web-performance-tester-types';
-import { getRootPath } from '@seolhun/web-performance-tester-utils';
+import { LighthouseField, OutputType } from '@seolhun/web-performance-tester-models';
 
-export interface ReporterBuilderProps {}
+interface ReporterBuilderProps {}
 
 class ReporterBuilder implements ReporterBuilderProps {
   private config: any;
@@ -14,14 +12,14 @@ class ReporterBuilder implements ReporterBuilderProps {
 
   constructor(config: any) {
     this.config = config;
-    this.rootPath = `${getRootPath()}/${config.options.outputPath}`;
+    this.rootPath = `${process.cwd()}/${config.options.outputPath}`;
   }
 
   createCustomReport = (response: any, auditedFields: string[]) => {
     const report = auditedFields.reduce((obj, key) => {
       return {
         ...obj,
-        [key]: new LighthouseFieldResponse(response[key]),
+        [key]: new LighthouseField(response[key]),
       };
     }, {});
     return report;
@@ -43,4 +41,5 @@ class ReporterBuilder implements ReporterBuilderProps {
   }
 }
 
+export { ReporterBuilder, ReporterBuilderProps };
 export default ReporterBuilder;
