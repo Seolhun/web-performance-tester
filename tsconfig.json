@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES5",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ES5", "ES6", "ES7", "dom"],
-    "allowJs": true,
     /* Strict Type-Checking Options */
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -24,6 +23,7 @@
     "experimentalDecorators": true,
     "noEmitOnError": true,
     "traceResolution": false /* Report module resolution log messages. */,
+    "pretty": true,
     // Customized
     "declaration": true,
     "outDir": "dist"

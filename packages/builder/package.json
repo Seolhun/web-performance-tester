@@ -8,7 +8,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
     "prebuild": "rm -rf dist",
-    "build": "rollup -c",
+    "build": "tsc",
     "test": "jest"
   },
   "main": "dist/index.js",
