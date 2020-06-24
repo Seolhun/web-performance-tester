@@ -7,8 +7,8 @@ import { terser } from 'rollup-plugin-terser';
 import pkg from '../../package.json';
 
 let externals = [];
-if (pkg.dependencies) {
-  externals = Object.keys(pkg.dependencies);
+if (pkg.peerDependencies) {
+  externals = Object.keys(pkg.peerDependencies);
 }
 
 export default {
