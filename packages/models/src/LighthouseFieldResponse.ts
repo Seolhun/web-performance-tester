@@ -13,7 +13,6 @@ export class LighthouseFieldResponse implements LighthouseFieldProps {
     this.title = props.title;
     this.description = props.description;
     this.scoreDisplayMode = props.scoreDisplayMode;
-
     this.score = props.score || -1;
     this.numericValue = props.numericValue || '(not-set)';
   }
