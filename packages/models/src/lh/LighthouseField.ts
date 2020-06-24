@@ -1,6 +1,13 @@
-import { LighthouseFieldProps } from '@seolhun/web-performance-tester-types';
+interface LighthouseFieldProps {
+  id: string;
+  title: string;
+  description: string;
+  score: number;
+  scoreDisplayMode: string;
+  numericValue: number | string;
+}
 
-export class LighthouseFieldResponse implements LighthouseFieldProps {
+class LighthouseField implements LighthouseFieldProps {
   id: string;
   title: string;
   description: string;
@@ -18,4 +25,5 @@ export class LighthouseFieldResponse implements LighthouseFieldProps {
   }
 }
 
-export default LighthouseFieldResponse;
+export { LighthouseField, LighthouseFieldProps };
+export default LighthouseField;

@@ -1,4 +1,4 @@
-import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-types';
+import { EmulatedFormFactorType } from './WTPConfig';
 
 // port	                  Only specifies which port to use, Chrome is not launched for you.
 // chromeFlags	          Ignored, Chrome is not launched for you.
@@ -13,7 +13,17 @@ import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-types'
 // verbose	              Ignored, use logLevel instead.
 // quiet	                Ignored, use logLevel instead.
 
-// https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically
+interface WTPLighthouseConfigProps {
+  chromeFlags?: string[];
+  emulatedFormFactor?: EmulatedFormFactorType;
+  output?: string;
+  outputPath?: string;
+  port?: number;
+}
+
+/**
+ * @see https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically
+ */
 class WTPLighthouseConfig implements WTPLighthouseConfigProps {
   chromeFlags?: string[];
   emulatedFormFactor?: 'mobile' | 'desktop' | undefined;
@@ -30,4 +40,5 @@ class WTPLighthouseConfig implements WTPLighthouseConfigProps {
   }
 }
 
+export { WTPLighthouseConfig, WTPLighthouseConfigProps };
 export default WTPLighthouseConfig;
