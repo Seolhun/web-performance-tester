@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## To Do List
+
 - Mono Repo
   - builder
   - auditer
@@ -25,6 +26,7 @@ All notable changes to this project will be documented in this file.
 ## Next release Version
 
 ### 1.0.9
+
 - Add Javascript configuration for hooks
 
 ```js
@@ -35,7 +37,7 @@ const config = (defaultConfig) => {
   "subRoutes": [
     "/localize-components",
     "/vue-type-graphql-example",
-  ],                                        // default : [] 
+  ],                                        // default : []
   "timeout": 100000,                        // default : 100000
   "options": {
     "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--show-paint-rects"]  - ["--headless", "--disable-gpu"]
@@ -52,23 +54,26 @@ const config = (defaultConfig) => {
 ```
 
 ### 1.1.0
+
 - Add `Dashboard` and `File Manager` modules
 
-### 1.2.0 
-- Add `Reporter` modules 
+### 1.2.0
+
+- Add `Reporter` modules
   - Data table
   - Visualization
 
-### 1.4.0 
+### 1.4.0
+
 - Add `Exporting` and `Parsing` modules
   - JSON
   - CSV(Google)
   - HTML(?)
 
+### 1.5.0
 
-### 1.5.0 
 - Add `Tester` modules to filter result with Jest
 
 ```bash
-yarn test
+npm run test
 ```
