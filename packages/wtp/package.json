@@ -7,6 +7,7 @@
     "prettier": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
+    "prebuild": "rm -rf dist",
     "build": "rollup -c",
     "test": "jest"
   },
@@ -16,9 +17,7 @@
   ],
   "dependencies": {
     "@seolhun/web-performance-tester-builder": "^1.0.8",
-    "@seolhun/web-performance-tester-models": "^1.0.8",
-    "@seolhun/web-performance-tester-types": "^1.0.8",
-    "@seolhun/web-performance-tester-utils": "^1.0.8"
+    "@seolhun/web-performance-tester-models": "^1.0.8"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
