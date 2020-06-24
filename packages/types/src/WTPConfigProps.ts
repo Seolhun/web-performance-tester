@@ -13,20 +13,18 @@ export interface WTPConfigProps {
   reporter?: ReporterConfigProps;
 }
 
-export interface BuilderConfigProps {
+export interface BuilderConfigProps {}
 
-}
+export interface AuditerConfigProps {}
 
-export interface AuditerConfigProps {
+export interface TesterConfigProps {}
 
-}
+export interface ReporterConfigProps {}
 
-export interface TesterConfigProps {
-
-}
-
-export interface ReporterConfigProps {
-
-}
-
-export type TestType = TestTypes | 'ACCESSIBILITY' | 'BEST_PRACTICES' | 'PERFORMANCES' | 'PWA' | 'SEO';
+export type TestType =
+  | TestTypes
+  | 'ACCESSIBILITY'
+  | 'BEST_PRACTICES'
+  | 'PERFORMANCES'
+  | 'PWA'
+  | 'SEO';

@@ -9,9 +9,7 @@ import {
   TesterBuilder,
   ReporterBuilder,
 } from '@seolhun/web-performance-tester-builder';
-import {
-  WTPLighthouseConfigProps,
-} from '@seolhun/web-performance-tester-types';
+import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-types';
 
 class WebPerformanceTester {
   Config: ConfigurationBuilder;
@@ -26,10 +24,12 @@ class WebPerformanceTester {
     this.Reporter = new ReporterBuilder(this.Config.getConfig());
   }
 
-  async launchChromeAndRunLighthouse(baseUrl: string, options: WTPLighthouseConfigProps, config = null) {
-    const {
-      subRoutes,
-    } = this.Config.getConfig();
+  async launchChromeAndRunLighthouse(
+    baseUrl: string,
+    options: WTPLighthouseConfigProps,
+    config = null,
+  ) {
+    const { subRoutes } = this.Config.getConfig();
 
     const chrome = await chromeLauncher.launch({ chromeFlags: options.chromeFlags });
     options.port = chrome.port;
@@ -47,7 +47,12 @@ class WebPerformanceTester {
     return true;
   }
 
-  async runSubRoutes(subRoutes: string[] | undefined, options: WTPLighthouseConfigProps, config = null, currentIndex = 0): Promise<boolean> {
+  async runSubRoutes(
+    subRoutes: string[] | undefined,
+    options: WTPLighthouseConfigProps,
+    config = null,
+    currentIndex = 0,
+  ): Promise<boolean> {
     if (!Array.isArray(subRoutes)) {
       return await true;
     }
@@ -56,9 +61,7 @@ class WebPerformanceTester {
       return await true;
     }
 
-    const {
-      baseUrl,
-    } = this.Config.getConfig();
+    const { baseUrl } = this.Config.getConfig();
 
     const route = subRoutes[currentIndex];
     const targetUrl = `${baseUrl}${route}`;
@@ -82,10 +85,7 @@ class WebPerformanceTester {
   }
 
   run() {
-    const {
-      baseUrl,
-      options,
-    } = this.Config.getConfig();
+    const { baseUrl, options } = this.Config.getConfig();
 
     this.launchChromeAndRunLighthouse(baseUrl, options || {});
   }

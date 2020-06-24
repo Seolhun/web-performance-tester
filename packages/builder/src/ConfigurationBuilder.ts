@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 
 import { WTPConfig } from '@seolhun/web-performance-tester-models';
 import { WTPConfigProps } from '@seolhun/web-performance-tester-types';

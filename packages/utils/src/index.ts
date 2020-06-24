@@ -1,8 +1,6 @@
 import { getRootPath } from './PathUtils';
 
-export {
-  getRootPath,
-};
+export { getRootPath };
 
 export default {
   getRootPath,

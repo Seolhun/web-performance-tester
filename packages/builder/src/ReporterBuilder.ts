@@ -2,13 +2,11 @@ import fs from 'fs';
 
 import dayjs from 'dayjs';
 
-import { LighthouseFieldResponse, WTPConfig } from '@seolhun/web-performance-tester-models';
+import { LighthouseFieldResponse } from '@seolhun/web-performance-tester-models';
 import { OutputType } from '@seolhun/web-performance-tester-types';
 import { getRootPath } from '@seolhun/web-performance-tester-utils';
 
-export interface ReporterBuilderProps {
-
-}
+export interface ReporterBuilderProps {}
 
 class ReporterBuilder implements ReporterBuilderProps {
   private config: any;
@@ -27,13 +25,17 @@ class ReporterBuilder implements ReporterBuilderProps {
       };
     }, {});
     return report;
-  }
+  };
 
   saveReport(report: any, type: OutputType = this.config.options.output) {
     if (!fs.existsSync(this.rootPath)) {
       fs.mkdirSync(this.rootPath);
     }
-    fs.writeFileSync(`${this.rootPath}/${dayjs().format('YYYY-MM-DD HH:mm:ss')}.${type}`, report, 'utf8');
+    fs.writeFileSync(
+      `${this.rootPath}/${dayjs().format('YYYY-MM-DD HH:mm:ss')}.${type}`,
+      report,
+      'utf8',
+    );
   }
 
   sendToServer() {

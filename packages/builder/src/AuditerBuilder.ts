@@ -8,9 +8,7 @@ import {
   SEO,
 } from '@seolhun/web-performance-tester-types';
 
-export interface AuditerBuilderProps {
-
-}
+export interface AuditerBuilderProps {}
 
 class AuditerBuilder implements AuditerBuilderProps {
   getTestListByType = (type: TestType) => {
@@ -35,7 +33,7 @@ class AuditerBuilder implements AuditerBuilderProps {
     return (): string[] => {
       return Object.values(result);
     };
-  }
+  };
 
   getTestFields(type: TestType = TestTypes.PERFORMANCES): string[] {
     return this.getTestListByType(type)();
