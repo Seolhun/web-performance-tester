@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.8",
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "start": "yarn build && node dist/index.js"
   },
   "main": "dist/index.js",

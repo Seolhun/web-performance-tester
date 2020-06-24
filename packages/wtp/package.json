@@ -5,7 +5,7 @@
   "version": "1.0.8",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc"
+    "build": "rollup -c"
   },
   "main": "dist/index.js",
   "files": [

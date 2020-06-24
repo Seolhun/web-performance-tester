@@ -34,9 +34,9 @@
     "lh": "yarn build && cd packages/examples && yarn start"
   },
   "dependencies": {
-    "dayjs": "^1.8.14",
-    "lighthouse": "^5.1.0",
-    "puppeteer": "^1.17.0"
+    "dayjs": "^1.8.28",
+    "lighthouse": "^5.6.0",
+    "puppeteer": "^1.20.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.1",
