@@ -4,8 +4,11 @@
   "license": "MIT",
   "version": "1.0.8",
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "build": "rollup -c"
+    "prettier": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "clear": "rm -rf ./dist",
+    "build": "rollup -c",
+    "test": "jest"
   },
   "main": "dist/index.js",
   "files": [
