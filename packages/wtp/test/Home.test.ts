@@ -1,3 +1,4 @@
+// @ts-nocheck
 const lighthouse = require('lighthouse');
 
 const WebPerformanceTester = require('../index').default;

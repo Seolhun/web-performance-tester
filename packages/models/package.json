@@ -14,14 +14,6 @@
   "files": [
     "dist"
   ],
-  "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.2.0",
-    "tslint": "^5.17.0",
-    "typescript": "^3.5.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Seolhun/web-performance-tester.git"
