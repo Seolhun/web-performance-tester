@@ -37,7 +37,7 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 
 ### JSON
 
-> Important configuration json can't customize hooks like js
+> Set WPT configuration
 
 ```js
 // wtp.config.json
