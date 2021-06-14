@@ -9,7 +9,7 @@ class ConfigurationBuilder implements ConfigurationBuilderProps {
 
   constructor() {
     const jsonConfigPath = `${process.cwd()}/wpt.config.json`;
-    const configString = fs.readFileSync(jsonConfigPath, 'utf8');
+    const configString = fs.readFileSync(jsonConfigPath, 'utf8') ?? "{}";
     const config = JSON.parse(configString);
     this.config = new WPTConfig(config);
   }
