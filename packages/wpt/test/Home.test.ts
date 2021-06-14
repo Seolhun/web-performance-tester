@@ -8,15 +8,15 @@ describe('Common Test', () => {
 // import lighthouse from 'lighthouse';
 // import { WebPerformanceTester } from '../src/index';
 
-// const WTP = new WebPerformanceTester();
-// const { baseUrl, timeout, subRoutes, options } = WTP.Config.getConfig();
+// const WPT = new WebPerformanceTester();
+// const { baseUrl, timeout, subRoutes, options } = WPT.Config.getConfig();
 
 // describe('Naver Homepage', async () => {
 //   let page: any, lighthouseOptions = {
 //     ...options,
 //   };
 
-//   const auditedFields = WTP.Auditer.getTestFields();
+//   const auditedFields = WPT.Auditer.getTestFields();
 
 //   beforeAll(async () => {
 //     //@ts-ignore

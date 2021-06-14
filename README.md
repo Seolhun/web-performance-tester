@@ -40,7 +40,7 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 > Set WPT configuration
 
 ```js
-// wtp.config.json
+// wpt.config.json
 {
   "baseUrl": "https://github.com/Seolhun",  // Required
   "subRoutes": [

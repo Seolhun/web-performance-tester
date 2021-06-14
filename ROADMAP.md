@@ -30,7 +30,7 @@ All notable changes to this project will be documented in this file.
 - Add Javascript configuration for hooks
 
 ```js
-// wtp.config.js
+// wpt.config.js
 const config = (defaultConfig) => {
   ...defaultConfig,
   "baseUrl": "https://github.com/Seolhun",  // Required

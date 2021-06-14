@@ -1,3 +1,3 @@
-import { WebPerformanceTester } from '../../packages/wtp/src/tester/WebPerformanceTester';
+import { WebPerformanceTester } from '../../packages/wpt/src/tester/WebPerformanceTester';
 
 new WebPerformanceTester().run();

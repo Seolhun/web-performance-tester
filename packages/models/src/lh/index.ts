@@ -1,1 +1,1 @@
-export * from './LighthouseField';
+export * from './WPTLighthouseField';

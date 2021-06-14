@@ -1,9 +1,9 @@
-enum TestTypes {
-  ACCESSIBILITY,
-  BEST_PRACTICES,
-  PERFORMANCES,
-  PWA,
-  SEO,
+enum WPTTestTypes {
+  ACCESSIBILITY = 'accessibility',
+  BEST_PRACTICES = 'best-practices',
+  PERFORMANCES = 'performance',
+  PWA = 'pwa',
+  SEO = 'seo',
 }
 
 enum Accessibility {
@@ -149,4 +149,4 @@ enum SEO {
   VIEWPORT = 'viewport',
 }
 
-export { TestTypes, Accessibility, BestPractices, Performances, PWA, SEO };
+export { WPTTestTypes, Accessibility, BestPractices, Performances, PWA, SEO };

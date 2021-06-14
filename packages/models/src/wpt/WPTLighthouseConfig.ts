@@ -1,4 +1,4 @@
-import { EmulatedFormFactorType } from './WTPConfig';
+import { WPTEmulatedFormFactorType } from './WPTConfig';
 
 // port	                  Only specifies which port to use, Chrome is not launched for you.
 // chromeFlags	          Ignored, Chrome is not launched for you.
@@ -13,9 +13,9 @@ import { EmulatedFormFactorType } from './WTPConfig';
 // verbose	              Ignored, use logLevel instead.
 // quiet	                Ignored, use logLevel instead.
 
-interface WTPLighthouseConfigProps {
+interface WPTLighthouseConfigProps {
   chromeFlags?: string[];
-  emulatedFormFactor?: EmulatedFormFactorType;
+  emulatedFormFactor?: WPTEmulatedFormFactorType;
   output?: string;
   outputPath?: string;
   port?: number;
@@ -24,14 +24,14 @@ interface WTPLighthouseConfigProps {
 /**
  * @see https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically
  */
-class WTPLighthouseConfig implements WTPLighthouseConfigProps {
+class WPTLighthouseConfig implements WPTLighthouseConfigProps {
   chromeFlags?: string[];
   emulatedFormFactor?: 'mobile' | 'desktop' | undefined;
   output?: string;
   outputPath?: string | undefined;
   port?: number | undefined;
 
-  constructor(props: WTPLighthouseConfigProps) {
+  constructor(props: WPTLighthouseConfigProps) {
     this.chromeFlags = props.chromeFlags || ['--headless'];
     this.emulatedFormFactor = props.emulatedFormFactor || 'mobile';
     this.output = props.output || 'html';
@@ -40,5 +40,5 @@ class WTPLighthouseConfig implements WTPLighthouseConfigProps {
   }
 }
 
-export { WTPLighthouseConfig, WTPLighthouseConfigProps };
-export default WTPLighthouseConfig;
+export { WPTLighthouseConfig, WPTLighthouseConfigProps };
+export default WPTLighthouseConfig;

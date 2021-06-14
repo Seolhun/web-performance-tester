@@ -8,7 +8,7 @@ import {
   TesterBuilder,
   ReporterBuilder,
 } from '@seolhun/web-performance-tester-builder';
-import { WTPLighthouseConfigProps } from '@seolhun/web-performance-tester-models';
+import { WPTTestTypes, WPTLighthouseConfigProps } from '@seolhun/web-performance-tester-models';
 
 class WebPerformanceTester {
   config: ConfigurationBuilder;
@@ -24,17 +24,28 @@ class WebPerformanceTester {
   }
 
   private createLighthouseReport(lighthouseResult: any) {
-    const auditedFields = this.auditer.getTestFields();
     console.log(chalk.yellow('=*=*=*= SaveReport Start =*=*=*='));
     this.reporter.saveReport(lighthouseResult.report);
     console.log(chalk.yellow('=*=*=*= SaveReport End =*=*=*='));
 
     console.log(chalk.yellow('=*=*=*= CreateCustomReport Start =*=*=*='));
-    this.reporter.createCustomReport(lighthouseResult.lhr.audits, auditedFields);
+    const customReport = Object.values(WPTTestTypes).reduce((obj, value) => {
+      const auditedFields = this.auditer.getTestFields(value);
+      const result = this.reporter.createCustomReport(
+        lighthouseResult.lhr.audits,
+        value,
+        auditedFields,
+      );
+      return {
+        ...obj,
+        ...result,
+      };
+    }, {});
+    console.log(customReport);
     console.log(chalk.yellow('=*=*=*= CreateCustomReport End =*=*=*='));
   }
 
-  private async runLighthouse(url: string, options: WTPLighthouseConfigProps, config = null) {
+  private async runLighthouse(url: string, options: WPTLighthouseConfigProps, config = null) {
     const result = await lighthouse(url, options, config);
     this.createLighthouseReport(result);
     return true;
@@ -42,7 +53,7 @@ class WebPerformanceTester {
 
   private async runSubRoutes(
     subRoutes: string[] | undefined,
-    options: WTPLighthouseConfigProps,
+    options: WPTLighthouseConfigProps,
     config = null,
     currentIndex = 0,
   ): Promise<boolean> {
@@ -62,7 +73,7 @@ class WebPerformanceTester {
 
   private async launchChromeAndRunLighthouse(
     baseUrl: string,
-    options: WTPLighthouseConfigProps,
+    options: WPTLighthouseConfigProps,
     config = null,
   ) {
     const { subRoutes } = this.config.getConfig();

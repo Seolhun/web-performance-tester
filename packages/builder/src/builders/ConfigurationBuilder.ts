@@ -1,20 +1,20 @@
 import fs from 'fs';
 
-import { WTPConfig } from '@seolhun/web-performance-tester-models';
+import { WPTConfig } from '@seolhun/web-performance-tester-models';
 
 interface ConfigurationBuilderProps {}
 
 class ConfigurationBuilder implements ConfigurationBuilderProps {
-  private config: WTPConfig;
+  private config: WPTConfig;
 
   constructor() {
     const jsonConfigPath = `${process.cwd()}/wpt.config.json`;
     const configString = fs.readFileSync(jsonConfigPath, 'utf8');
     const config = JSON.parse(configString);
-    this.config = new WTPConfig(config);
+    this.config = new WPTConfig(config);
   }
 
-  getConfig(): WTPConfig {
+  getConfig(): WPTConfig {
     return this.config;
   }
 }

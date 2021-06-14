@@ -1,8 +1,7 @@
 import fs from 'fs';
-
 import dayjs from 'dayjs';
 
-import { LighthouseField, OutputType } from '@seolhun/web-performance-tester-models';
+import { WPTLighthouseField, WPTOutputType } from '@seolhun/web-performance-tester-models';
 
 interface ReporterBuilderProps {}
 
@@ -15,17 +14,19 @@ class ReporterBuilder implements ReporterBuilderProps {
     this.rootPath = `${process.cwd()}/${config.options.outputPath}`;
   }
 
-  createCustomReport = (response: any, auditedFields: string[]) => {
-    const report = auditedFields.reduce((obj, key) => {
+  createCustomReport = (audits: any, auditKey: string, auditItemKeys: string[]) => {
+    const report = auditItemKeys.reduce((obj, key) => {
       return {
         ...obj,
-        [key]: new LighthouseField(response[key]),
+        [key]: new WPTLighthouseField(audits[key]),
       };
     }, {});
-    return report;
+    return {
+      [auditKey]: report,
+    };
   };
 
-  saveReport(report: any, type: OutputType = this.config.options.output) {
+  saveReport(report: any, type: WPTOutputType = this.config.options.output) {
     if (!fs.existsSync(this.rootPath)) {
       fs.mkdirSync(this.rootPath);
     }
