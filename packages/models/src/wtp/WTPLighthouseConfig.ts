@@ -32,7 +32,7 @@ class WTPLighthouseConfig implements WTPLighthouseConfigProps {
   port?: number | undefined;
 
   constructor(props: WTPLighthouseConfigProps) {
-    this.chromeFlags = props.chromeFlags || ['--show-paint-rects'];
+    this.chromeFlags = props.chromeFlags || ['--headless'];
     this.emulatedFormFactor = props.emulatedFormFactor || 'mobile';
     this.output = props.output || 'html';
     this.outputPath = props.outputPath || './reports';

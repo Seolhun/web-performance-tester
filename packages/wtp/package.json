@@ -8,6 +8,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
     "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
     "test": "jest"
   },
   "main": "dist/index.js",

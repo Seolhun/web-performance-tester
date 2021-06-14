@@ -35,12 +35,11 @@ const config = (defaultConfig) => {
   ...defaultConfig,
   "baseUrl": "https://github.com/Seolhun",  // Required
   "subRoutes": [
-    "/localize-components",
-    "/vue-type-graphql-example",
+    "/web-performance-tester",
   ],                                        // default : []
   "timeout": 100000,                        // default : 100000
   "options": {
-    "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--show-paint-rects"]  - ["--headless", "--disable-gpu"]
+    "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
     "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
     "output": "html",                       // default : "html"         - json, html, csv
     "outputPath": "reports",                // default : "reports"

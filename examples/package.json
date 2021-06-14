@@ -8,16 +8,13 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
     "build": "tsc",
-    "start": "npm run build && node dist/index.js",
+    "start": "ts-node src/index.ts",
     "test": "jest"
   },
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@seolhun/web-performance-tester": "^1.0.8"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Seolhun/web-performance-tester.git"
@@ -30,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/Seolhun/web-performance-tester/issues"
   },
-  "homepage": "https://github.com/Seolhun/web-performance-tester#readme"
+  "homepage": "https://github.com/Seolhun/web-performance-tester#readme",
+  "devDependencies": {
+    "ts-node": "^10.0.0"
+  }
 }

@@ -1,12 +1,12 @@
 {
   "baseUrl": "https://github.com/Seolhun",
-  "subRoutes": ["/web-performance-tester", "/localize-components"],
+  "subRoutes": ["/web-performance-tester"],
   "timeout": 100000,
   "options": {
     "chromeFlags": ["--show-paint-rects"],
     "mulatedFormFactor": "mobile",
     "output": "html",
-    "outputPath": "reports",
+    "outputPath": "./reports",
     "port": 8080
   },
   "builder": {},
