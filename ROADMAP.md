@@ -37,18 +37,14 @@ const config = (defaultConfig) => {
   "subRoutes": [
     "/web-performance-tester",
   ],                                        // default : []
-  "timeout": 100000,                        // default : 100000
+  "timeout": 10000,                         // default : 10000
   "options": {
-    "chromeFlags": ["--headless", "--show-paint-rects"],  // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
+    "chromeFlags": ["--headless"],          // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
     "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
     "output": "html",                       // default : "html"         - json, html, csv
     "outputPath": "reports",                // default : "reports"
     "port": 8080                            // default : 8080
   },
-  "builder": {},                            // default : {}
-  "auditer": {},                            // default : {}
-  "tester": {},                             // default : {}
-  "reporter": {}                            // default : {}
 }
 ```
 

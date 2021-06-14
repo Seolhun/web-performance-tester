@@ -35,10 +35,6 @@ class ReporterBuilder implements ReporterBuilderProps {
       'utf8',
     );
   }
-
-  sendToServer() {
-    // Implementation
-  }
 }
 
 export { ReporterBuilder, ReporterBuilderProps };

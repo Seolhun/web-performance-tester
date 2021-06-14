@@ -1,9 +1,9 @@
 {
   "baseUrl": "https://github.com/Seolhun",
   "subRoutes": ["/web-performance-tester"],
-  "timeout": 100000,
+  "timeout": 10000,
   "options": {
-    "chromeFlags": ["--show-paint-rects"],
+    "chromeFlags": ["--headless"],
     "mulatedFormFactor": "mobile",
     "output": "html",
     "outputPath": "./reports",

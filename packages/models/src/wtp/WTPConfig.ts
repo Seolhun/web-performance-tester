@@ -5,21 +5,60 @@ import { TestTypes } from '../constants';
 interface WTPConfigProps {
   baseUrl: string;
 
+  /**
+   * @default []
+   */
   subRoutes?: string[];
+
+  /**
+   * @default 10000
+   */
   timeout?: number;
+
+  /**
+   * @see packages/models/src/wtp/WTPLighthouseConfig.ts
+   */
   options?: WTPLighthouseConfigProps;
+
+  /**
+   * @default {}
+   */
   builder?: BuilderConfigProps;
+
+  /**
+   * @default {}
+   */
   auditer?: AuditerConfigProps;
+
+  /**
+   * @default {}
+   */
   tester?: TesterConfigProps;
+
+  /**
+   * @default {}
+   */
   reporter?: ReporterConfigProps;
 }
 
+/**
+ * for JS configuration
+ */
 interface BuilderConfigProps {}
 
+/**
+ * for JS configuration
+ */
 interface AuditerConfigProps {}
 
+/**
+ * for JS configuration
+ */
 interface TesterConfigProps {}
 
+/**
+ * for JS configuration
+ */
 interface ReporterConfigProps {}
 
 type TestType = TestTypes | 'ACCESSIBILITY' | 'BEST_PRACTICES' | 'PERFORMANCES' | 'PWA' | 'SEO';
@@ -41,7 +80,7 @@ class WTPConfig implements WTPConfigProps {
   constructor(props: WTPConfigProps) {
     this.baseUrl = props.baseUrl;
     this.subRoutes = props.subRoutes || [];
-    this.timeout = props.timeout || 100000;
+    this.timeout = props.timeout || 10000;
     this.options = props.options || new WTPLighthouseConfig(props.options || {});
     this.builder = props.builder || {};
     this.auditer = props.auditer || {};
