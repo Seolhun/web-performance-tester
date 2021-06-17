@@ -34,7 +34,7 @@
     "lh": "npm run build && cd examples && npm run start"
   },
   "dependencies": {
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.5",
     "lighthouse": "^7.5.0",
     "puppeteer": "^1.20.0"
   },
