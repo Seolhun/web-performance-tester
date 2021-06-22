@@ -1,4 +1,4 @@
-# Example - Advanced
+# Example - Default
 
 ## Pre-requisites
 
