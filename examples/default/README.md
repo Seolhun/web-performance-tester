@@ -1,6 +1,6 @@
 # Example - Advanced
 
-## Pre=requisites
+## Pre-requisites
 
 WPT modules must be built.
 
