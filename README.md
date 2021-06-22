@@ -80,4 +80,4 @@ $ npm run lh
 
 ### Codes
 
-- Examples Code [here](https://github.com/Seolhun/web-performance-tester/tree/master/packages/examples/src/index.ts)
+- Examples Code [here](https://github.com/Seolhun/web-performance-tester/blob/master/examples/src/index.ts)
