@@ -18,7 +18,10 @@
   ],
   "dependencies": {
     "@seolhun/web-performance-tester-builder": "^1.0.8",
-    "@seolhun/web-performance-tester-models": "^1.0.8"
+    "@seolhun/web-performance-tester-models": "^1.0.8",
+    "dayjs": "^1.10.6",
+    "lighthouse": "^7.5.0",
+    "puppeteer": "^1.20.0"
   },
   "repository": {
     "type": "git",
