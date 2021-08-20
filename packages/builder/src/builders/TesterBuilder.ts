@@ -1,6 +1,6 @@
-interface TesterBuilderProps {}
+export interface TesterBuilderProps {}
 
 class TesterBuilder implements TesterBuilderProps {}
 
-export { TesterBuilder, TesterBuilderProps };
+export { TesterBuilder };
 export default TesterBuilder;

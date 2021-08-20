@@ -1,4 +1,4 @@
+export * from './AuditorBuilder';
 export * from './ConfigurationBuilder';
-export * from './AuditerBuilder';
-export * from './TesterBuilder';
 export * from './ReporterBuilder';
+export * from './TesterBuilder';

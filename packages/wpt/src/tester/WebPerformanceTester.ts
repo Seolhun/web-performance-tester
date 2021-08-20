@@ -4,7 +4,7 @@ import chalk from 'chalk';
 
 import {
   ConfigurationBuilder,
-  AuditerBuilder,
+  AuditorBuilder,
   TesterBuilder,
   ReporterBuilder,
 } from '@seolhun/web-performance-tester-builder';
@@ -12,13 +12,13 @@ import { WPTTestTypes, WPTLighthouseConfigProps } from '@seolhun/web-performance
 
 class WebPerformanceTester {
   config: ConfigurationBuilder;
-  auditer: AuditerBuilder;
+  auditor: AuditorBuilder;
   tester: TesterBuilder;
   reporter: ReporterBuilder;
 
   constructor() {
     this.config = new ConfigurationBuilder();
-    this.auditer = new AuditerBuilder();
+    this.auditor = new AuditorBuilder();
     this.tester = new TesterBuilder();
     this.reporter = new ReporterBuilder(this.config.getConfig());
   }
@@ -30,7 +30,7 @@ class WebPerformanceTester {
 
     console.log(chalk.yellow('=*=*=*= CreateCustomReport Start =*=*=*='));
     const customReport = Object.values(WPTTestTypes).reduce((obj, value) => {
-      const auditedFields = this.auditer.getTestFields(value);
+      const auditedFields = this.auditor.getTestFields(value);
       const result = this.reporter.createCustomReport(
         lighthouseResult.lhr.audits,
         value,
