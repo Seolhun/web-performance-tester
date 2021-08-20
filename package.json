@@ -26,37 +26,31 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "prettier": "lerna run prettier",
-    "bs": "lerna bootstrap --force-local",
+    "bs": "lerna bootstrap",
     "version:cli": "lerna version --amend -m 'chore(release): publish %s'",
     "release": "lerna publish",
     "prerelease": "lerna publish from-git",
     "release:patch": "lerna publish patch -y",
-    "lh": "npm run build && cd examples && npm run start"
-  },
-  "dependencies": {
-    "dayjs": "^1.10.6",
-    "lighthouse": "^7.5.0",
-    "puppeteer": "^1.20.0"
+    "lh": "cd examples/default && npm run start"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
-    "@typescript-eslint/eslint-plugin": "^2.16.0",
-    "@typescript-eslint/parser": "^2.16.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-eslint-plugin": "^2.2.2",
-    "eslint-plugin-import": "^2.21.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-eslint-plugin": "^3.5.3",
+    "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.0.1",
     "jest-cli": "^26.1.0",
     "jest-config": "^26.0.1",
-    "lerna": "^3.22.1",
+    "lerna": "^4.0.0",
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^4.3.5"
   },
   "workspaces": [
     "packages/*"
