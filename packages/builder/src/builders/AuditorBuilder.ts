@@ -8,9 +8,9 @@ import {
   SEO,
 } from '@seolhun/web-performance-tester-models';
 
-interface AuditerBuilderProps {}
+export interface AuditorBuilderProps {}
 
-class AuditerBuilder implements AuditerBuilderProps {
+class AuditorBuilder implements AuditorBuilderProps {
   private getTestListByType = (type: WPTTestType) => {
     let result: any;
     switch (type) {
@@ -46,5 +46,5 @@ class AuditerBuilder implements AuditerBuilderProps {
   }
 }
 
-export { AuditerBuilder, AuditerBuilderProps };
-export default AuditerBuilder;
+export { AuditorBuilder };
+export default AuditorBuilder;
