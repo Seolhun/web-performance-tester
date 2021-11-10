@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/Seolhun/web-performance-tester"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "keywords": [
     "puppeteer",
     "lighthouse",
@@ -55,9 +58,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
