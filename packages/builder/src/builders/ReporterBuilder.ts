@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 import { WPTLighthouseField, WPTOutputType } from '@seolhun/web-performance-tester-models';
 
-interface ReporterBuilderProps {}
+export interface ReporterBuilderProps {}
 
 class ReporterBuilder implements ReporterBuilderProps {
   private config: any;
@@ -38,5 +38,5 @@ class ReporterBuilder implements ReporterBuilderProps {
   }
 }
 
-export { ReporterBuilder, ReporterBuilderProps };
+export { ReporterBuilder };
 export default ReporterBuilder;

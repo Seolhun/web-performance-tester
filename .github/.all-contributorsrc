@@ -13,7 +13,7 @@
   "contributors": [
     {
       "login": "Seolhun",
-      "name": "Seol Hun",
+      "name": "SeolHun",
       "avatar_url": "https://avatars.githubusercontent.com/Seolhun",
       "profile": "https://github.com/Seolhun",
       "contributions": [
@@ -22,6 +22,6 @@
         "bug",
         "review"
       ]
-    },
+    }
   ]
 }

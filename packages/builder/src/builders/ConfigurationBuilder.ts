@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import { WPTConfig } from '@seolhun/web-performance-tester-models';
 
-interface ConfigurationBuilderProps {}
+export interface ConfigurationBuilderProps {}
 
 class ConfigurationBuilder implements ConfigurationBuilderProps {
   private config: WPTConfig;
@@ -19,5 +19,5 @@ class ConfigurationBuilder implements ConfigurationBuilderProps {
   }
 }
 
-export { ConfigurationBuilder, ConfigurationBuilderProps };
+export { ConfigurationBuilder };
 export default ConfigurationBuilder;
