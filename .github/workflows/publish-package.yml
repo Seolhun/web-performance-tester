@@ -19,7 +19,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://npm.pkg.github.com"
-          scope: "@ejnkr"
 
       - name: Checkout
         uses: actions/checkout@v2
