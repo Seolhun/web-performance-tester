@@ -23,7 +23,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "lh": "cd examples/default && npm run start"
   },
   "main": "dist/index.js",
   "files": [
