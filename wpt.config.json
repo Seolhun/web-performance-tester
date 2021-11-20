@@ -1,12 +1,14 @@
 {
   "origin": "https://github.com/Seolhun",
-  "pathnames": ["/web-performance-tester"],
+  "pathnames": [
+    "/web-performance-tester"
+  ],
   "timeout": 10000,
   "options": {
     "chromeFlags": ["--headless"],
-    "formFactor": "mobile",
+    "formFactor": "desktop",
     "output": "html",
-    "outputPath": "./reports",
+    "outputPath": "reports",
     "port": 8080
   }
 }

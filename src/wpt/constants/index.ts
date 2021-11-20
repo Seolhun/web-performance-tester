@@ -1,4 +1,4 @@
-export enum WPTTestTypes {
+export enum WptTestFieldType {
   ACCESSIBILITY = 'accessibility',
   BEST_PRACTICES = 'best-practices',
   PERFORMANCES = 'performance',
@@ -148,4 +148,3 @@ export enum SEO {
   TAP_TARGETS = 'tap-targets',
   VIEWPORT = 'viewport',
 }
-

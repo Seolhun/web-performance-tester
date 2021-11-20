@@ -1,2 +1,2 @@
-export * from './WPTConfig';
-export * from './WPTLighthouseConfig';
+export { default } from './WebPerformanceTester'
+export * from './WebPerformanceTester'

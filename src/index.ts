@@ -1,1 +1,2 @@
-export * from './tester';
+export { default } from './wpt'
+export * from './wpt'

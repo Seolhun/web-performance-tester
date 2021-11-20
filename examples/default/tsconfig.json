@@ -2,10 +2,14 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["ES5", "ES6", "ES7", "dom"],
+    "esModuleInterop": true,
+    "lib": [
+      "ES5",
+      "ES6",
+    ],
+    "allowJs": true,
+    "sourceMap": true,
     /* Strict Type-Checking Options */
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -22,12 +26,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitOnError": true,
+    "pretty": true /* Stylize errors and messages using color and context. */,
     "traceResolution": false /* Report module resolution log messages. */,
-    "pretty": true,
     // Customized
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "dist"
   },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules/**", "test/**"]
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+  ]
 }

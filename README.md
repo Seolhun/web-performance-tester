@@ -21,13 +21,13 @@ This is an example of using the global setup/teardown apis alone with the async 
 
 Configuration Builder is watching and checking config files validation.
 
-### 2. Auditer
+### 2. Auditor
 
-Auditer is lighthouse builder that setting test configuration.
+Auditor is lighthouse builder that setting test configuration.
 
 ### 3. Tester
 
-Tester is lighthoust test runner that executing test files with jest.
+Tester is lighthouse test runner that executing test files with jest.
 
 ### 4. Reporter
 
@@ -42,14 +42,14 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 ```js
 // wpt.config.json
 {
-  "baseUrl": "https://github.com/Seolhun",  // Required
-  "subRoutes": [
+  "origin": "https://github.com/Seolhun",  // Required
+  "pathnames": [
     "/web-performance-tester",
   ],                                        // default : []
   "timeout": 10000,                         // default : 10000
   "options": {
     "chromeFlags": ["--headless"],          // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
-    "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
+    "formFactor": "desktop",                // default : "mobile"       - desktop, mobile
     "output": "html",                       // default : "html"         - json, html, csv
     "outputPath": "reports",                // default : "reports"
     "port": 8080                            // default : 8080
@@ -62,20 +62,19 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 ### Install
 
 ```bash
-$ npm install
+npm install
 ```
 
 ### Build
 
 ```bash
-$ npm run bs
-$ npm run build
+npm run build
 ```
 
 ### Run
 
 ```bash
-$ npm run lh
+npm run start
 ```
 
 ### Codes

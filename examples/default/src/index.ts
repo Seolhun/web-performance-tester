@@ -1,3 +1,3 @@
-import { WebPerformanceTester } from '../../../dist';
+import { WebPerformanceTester } from '../../../dist'
 
-new WebPerformanceTester().run();
+new WebPerformanceTester().run()
