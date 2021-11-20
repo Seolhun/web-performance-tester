@@ -1,4 +1,4 @@
-enum WPTTestTypes {
+export enum WPTTestTypes {
   ACCESSIBILITY = 'accessibility',
   BEST_PRACTICES = 'best-practices',
   PERFORMANCES = 'performance',
@@ -6,7 +6,7 @@ enum WPTTestTypes {
   SEO = 'seo',
 }
 
-enum Accessibility {
+export enum Accessibility {
   ACCESSKEYS = 'accesskeys',
   ARIA_ALLOWED_ATTR = 'aria-allowed-attr',
   ARIA_REQUIRED_ATTR = 'aria-required-attr',
@@ -55,7 +55,7 @@ enum Accessibility {
   VISUAL_ORDER_FOLLOWS_DOM = 'visual-order-follows-dom',
 }
 
-enum BestPractices {
+export enum BestPractices {
   APPCACHE_MANIFEST = 'appcache-manifest',
   DEPRECATIONS = 'deprecations',
   DOCTYPE = 'doctype',
@@ -72,7 +72,7 @@ enum BestPractices {
   USES_PASSIVE_EVENT_LISTENERS = 'uses-passive-event-listeners',
 }
 
-enum Performances {
+export enum Performances {
   BOOTUP_TIME = 'bootup-time',
   CRITICAL_REQUEST_CHAINS = 'critical-request-chains',
   DIAGNOSTICS = 'diagnostics',
@@ -114,7 +114,7 @@ enum Performances {
   USES_WEBP_IMAGES = 'uses-webp-images',
 }
 
-enum PWA {
+export enum PWA {
   APPLE_TOUCH_ICON = 'apple-touch-icon',
   CONTENT_WIDTH = 'content-width',
   INSTALLABLE_MANIFEST = 'installable-manifest',
@@ -132,7 +132,7 @@ enum PWA {
   WORKS_OFFLINE = 'works-offline',
 }
 
-enum SEO {
+export enum SEO {
   CANONICAL = 'canonical',
   DOCUMENT_TITLE = 'document-title',
   FONT_SIZE = 'font-size',
@@ -149,4 +149,3 @@ enum SEO {
   VIEWPORT = 'viewport',
 }
 
-export { WPTTestTypes, Accessibility, BestPractices, Performances, PWA, SEO };

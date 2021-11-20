@@ -5,23 +5,24 @@ import { WPTTestTypes } from '../constants';
 /**
  * for JS configuration
  */
-interface WPTBuilderConfigProps {}
+export interface WPTBuilderConfigProps {}
 
 /**
  * for JS configuration
  */
-interface WPTAuditerConfigProps {}
+export interface WPTAuditerConfigProps {}
 
 /**
  * for JS configuration
  */
-interface WPTTesterConfigProps {}
+export interface WPTTesterConfigProps {}
 
 /**
  * for JS configuration
  */
-interface WPTReporterConfigProps {}
-interface WPTConfigProps {
+export interface WPTReporterConfigProps {}
+
+export interface WPTConfigProps {
   baseUrl: string;
 
   /**
@@ -60,7 +61,7 @@ interface WPTConfigProps {
   reporter?: WPTReporterConfigProps;
 }
 
-type WPTTestType =
+export type WPTTestType =
   | WPTTestTypes
   | 'ACCESSIBILITY'
   | 'BEST_PRACTICES'
@@ -68,11 +69,11 @@ type WPTTestType =
   | 'PWA'
   | 'SEO';
 
-type WPTEmulatedFormFactorType = 'mobile' | 'desktop';
+export type WPTEmulatedFormFactorType = 'mobile' | 'desktop';
 
-type WPTOutputType = 'csv' | 'html' | 'json';
+export type WPTOutputType = 'csv' | 'html' | 'json';
 
-class WPTConfig implements WPTConfigProps {
+export class WPTConfig implements WPTConfigProps {
   baseUrl: string;
   subRoutes: string[] | undefined;
   timeout: number | undefined;
@@ -94,15 +95,4 @@ class WPTConfig implements WPTConfigProps {
   }
 }
 
-export {
-  WPTConfig,
-  WPTConfigProps,
-  WPTBuilderConfigProps,
-  WPTAuditerConfigProps,
-  WPTTesterConfigProps,
-  WPTReporterConfigProps,
-  WPTTestType,
-  WPTEmulatedFormFactorType,
-  WPTOutputType,
-};
 export default WPTConfig;

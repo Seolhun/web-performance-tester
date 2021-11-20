@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Mono Repo
   - builder
-  - auditer
+  - auditor
   - reporter
   - tester
   - server

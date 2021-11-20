@@ -1,3 +1,3 @@
-import { WebPerformanceTester } from '../../../packages/wpt/src/tester/WebPerformanceTester';
+import { WebPerformanceTester } from '../../../dist';
 
 new WebPerformanceTester().run();
