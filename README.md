@@ -74,7 +74,7 @@ npm run build
 ### Run
 
 ```bash
-npm run start
+npm run lh
 ```
 
 ### Codes
