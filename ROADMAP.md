@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Mono Repo
   - builder
-  - auditer
+  - auditor
   - reporter
   - tester
   - server
@@ -33,14 +33,14 @@ All notable changes to this project will be documented in this file.
 // wpt.config.js
 const config = (defaultConfig) => {
   ...defaultConfig,
-  "baseUrl": "https://github.com/Seolhun",  // Required
-  "subRoutes": [
+  "origin": "https://github.com/Seolhun",  // Required
+  "pathnames": [
     "/web-performance-tester",
   ],                                        // default : []
   "timeout": 10000,                         // default : 10000
   "options": {
     "chromeFlags": ["--headless"],          // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
-    "mulatedFormFactor": "mobile",          // default : "mobile"       - desktop, mobile
+    "formFactor": "desktop",                // default : "mobile"       - desktop, mobile
     "output": "html",                       // default : "html"         - json, html, csv
     "outputPath": "reports",                // default : "reports"
     "port": 8080                            // default : 8080

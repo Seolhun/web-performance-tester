@@ -1,37 +1,23 @@
 module.exports = {
   env: {
-    jest: true,
     browser: true,
+    es2021: true
   },
-  extends: ["plugin:@typescript-eslint/eslint-recommended"],
-  plugins: ["@typescript-eslint", "eslint-plugin", "jest"],
-  parser: "@typescript-eslint/parser",
-  rules: {
-    // TODO: Will be Removed
-    "import/no-cycle": 0,
-    "mouse-events-have-key-events": 0,
-  },
+  extends: [
+    'standard',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 8,
-    sourceType: "module",
-    ecmaFeatures: {
-      impliedStrict: true,
-      experimentalObjectRestSpread: true,
-    },
-    allowImportExportEverywhere: true,
+    ecmaVersion: 13,
+    sourceType: 'module'
   },
-  settings: {
-    "prettier/prettier": "error",
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"],
-    },
-    "import/resolver": {
-      typescript: {
-        alwaysTryTypes: true,
-      },
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },
-  },
-};
+  plugins: [
+    '@typescript-eslint'
+  ],
+  rules: {
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-empty-interface': 0
+  }
+}
