@@ -1,11 +1,3 @@
----
-name: Pull request
-about: Pull request for this project
-title: ''
-labels: 'CodeReview'
-assignees: 'Seolhun'
-
----
 ## Purpose
 
 - Write the purpose this task. if task has a issue, write the issue number.

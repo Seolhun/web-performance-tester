@@ -1,8 +1,8 @@
-name: Github Build
+name: Dev Build
 
 on:
   push:
-    branches: [master, develop]
+    branches: [develop]
     paths-ignore:
       - '**/*.md'
 
@@ -11,10 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
-    env:
-      BRANCH: ${{github.ref}}
-      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        node-version: [16.x]
 
     steps:
       - name: Checkout
@@ -28,20 +25,11 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Bootstrap
-        run: npm run bs
-
-      - name: Linting
-        run: npm run lint
-
-      - name: Test
-        run: npm run test
-
       - name: Build
-        run: npm run build --if-present
+        run: npm run build
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: dev-travis
+          SLACK_CHANNEL: github-builds
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
