@@ -8,6 +8,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
     "build": "tsc",
+    "start": "ts-node src/index.ts",
     "test": "jest"
   },
   "main": "dist/index.js",

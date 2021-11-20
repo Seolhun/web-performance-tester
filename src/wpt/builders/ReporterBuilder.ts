@@ -1,43 +1,49 @@
 import fs from 'fs'
-import dayjs from 'dayjs'
+import path from 'path'
+import dayjs, { Dayjs } from 'dayjs'
 
-import { LighthouseField } from '../models'
-import { WPTOutputType } from '../WptConfig'
+// import { LighthouseField } from '../models'
+import { WptOutputType } from '../WptConfig'
 import { WptLighthouseConfig, WptLighthouseConfigProps } from '../configs'
 
 export interface IReporterBuilder {
-  createReport: (audits: any, auditKey: string, auditItemKeys: string[]) => any;
-  saveReport: (report: any, type?: WPTOutputType) => void;
+  createAuditsReport: (lighthouseAudits: any) => Promise<void>;
+  saveReportFile: (
+    lighthouseResult: any,
+    reportFileName: string,
+    type?: WptOutputType
+  ) => void;
 }
 
 class ReporterBuilder implements IReporterBuilder {
-  private config: WptLighthouseConfig;
-  private rootPath: string;
+  private lighthouseConfig: WptLighthouseConfig;
+  private reportAt: Dayjs;
+  private directoryPath: string;
 
-  constructor (props: WptLighthouseConfigProps) {
-    this.config = new WptLighthouseConfig(props)
-    this.rootPath = `${process.cwd()}/${this.config.outputPath}`
+  constructor (lighthouseConfig: WptLighthouseConfigProps) {
+    this.lighthouseConfig = new WptLighthouseConfig(lighthouseConfig)
+    this.reportAt = dayjs()
+    this.directoryPath = path.resolve(
+      process.cwd(),
+      this.lighthouseConfig.outputPath,
+      this.reportAt.format('YY-MM-DD_HH:mm')
+    )
   }
 
-  createReport = (audits: any, auditKey: string, auditItemKeys: string[]) => {
-    const report = auditItemKeys.reduce((obj, key) => {
-      return {
-        ...obj,
-        [key]: new LighthouseField(audits[key])
-      }
-    }, {})
-    return {
-      [auditKey]: report
-    }
-  };
+  async createAuditsReport (_lighthouseAudits: any) {}
 
-  saveReport (report: any, type: WPTOutputType = this.config.output) {
-    if (!fs.existsSync(this.rootPath)) {
-      fs.mkdirSync(this.rootPath)
+  saveReportFile (
+    lighthouseResult: any,
+    reportFileName: string,
+    type: WptOutputType = this.lighthouseConfig.output
+  ) {
+    if (!fs.existsSync(this.directoryPath)) {
+      fs.mkdirSync(this.directoryPath, { recursive: true })
     }
+
     fs.writeFileSync(
-      `${this.rootPath}/${dayjs().format('YYYY-MM-DD HH:mm:ss')}.${type}`,
-      report,
+      `${this.directoryPath}/${reportFileName}.${type}`,
+      lighthouseResult,
       'utf8'
     )
   }

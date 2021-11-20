@@ -1,12 +1,34 @@
 {
+  "name": "Seolhun_Github",
   "origin": "https://github.com/Seolhun",
-  "pathnames": ["/web-performance-tester"],
-  "timeout": 10000,
+  "auditPaths": [
+    {
+      "name": "wpt",
+      "pathname": "/web-performance-tester"
+    },
+    {
+      "name": "memory-form",
+      "pathname": "/memory-form"
+    },
+    {
+      "name": "editor.js",
+      "pathname": "/editor.js"
+    },
+    {
+      "name": "cache",
+      "pathname": "/cache"
+    },
+    {
+      "name": "localize-components",
+      "pathname": "/localize-components"
+    }
+  ],
+  "timeout": 20000,
   "options": {
     "chromeFlags": ["--headless"],
-    "formFactor": "mobile",
+    "formFactor": "desktop",
     "output": "html",
-    "outputPath": "./reports",
-    "port": 8080
+    "outputPath": "reports",
+    "port": 8000
   }
 }

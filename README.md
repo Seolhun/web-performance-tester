@@ -42,11 +42,11 @@ Reporter make and send analytics report as CSV, JSON or other ways.
 ```js
 // wpt.config.json
 {
-  "origin": "https://github.com/Seolhun",  // Required
-  "pathnames": [
-    "/web-performance-tester",
-  ],                                        // default : []
-  "timeout": 10000,                         // default : 10000
+  "name": ""                                // Required
+  "origin": "",                             // Required
+  "auditPaths": [],                         // Required
+  "timeout": 20000,                         // default : 20000
+  "concurrency": 1,                         // default : 5
   "options": {
     "chromeFlags": ["--headless"],          // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
     "formFactor": "desktop",                // default : "mobile"       - desktop, mobile

@@ -1,4 +1,4 @@
-import { WPTOutputType } from '../WptConfig'
+import { WptOutputType } from '../WptConfig'
 
 export type ChromeFlagType = '--headless' | '--show-paint-rects' | '--disable-gpu';
 
@@ -18,7 +18,7 @@ export interface WptLighthouseConfigProps {
   /**
    * @default html
    */
-  output?: WPTOutputType;
+  output?: WptOutputType;
 
   /**
    * @default ./reports
@@ -37,7 +37,7 @@ export interface WptLighthouseConfigProps {
 class WptLighthouseConfig implements WptLighthouseConfigProps {
   chromeFlags: ChromeFlagType[]
   formFactor: FormFactorType;
-  output: WPTOutputType;
+  output: WptOutputType;
   outputPath: string;
   port: number;
 

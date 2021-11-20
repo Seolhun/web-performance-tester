@@ -4,98 +4,88 @@ import { launch } from 'chrome-launcher'
 import chalk from 'chalk'
 
 import {
-  AuditorBuilder,
-  IAuditorBuilder,
   IReporterBuilder,
   ReporterBuilder
 } from './builders'
-import { WptLighthouseConfigProps } from './configs'
-import { WptTestFieldType } from './constants'
+import * as constants from './constants'
 import WptConfig from './WptConfig'
 
-interface WebPerformanceTesterProps {
-  auditor?: IAuditorBuilder;
+export interface WebPerformanceTesterProps {
   reporter?: IReporterBuilder;
+}
+
+type WptAuditPathQueueItem = {
+  name: string;
+  url: string;
 }
 
 class WebPerformanceTester {
   private config: WptConfig;
-  private auditor: IAuditorBuilder;
+  private auditPathsQueue: WptAuditPathQueueItem[] = [];
   private reporter: IReporterBuilder;
 
   constructor (props?: WebPerformanceTesterProps) {
     this.config = new WptConfig()
-    this.auditor = props?.auditor ?? new AuditorBuilder()
+    this.auditPathsQueue = this.config.auditPaths.map((auditPath) => {
+      return {
+        ...auditPath,
+        url: `${this.config.origin}${auditPath.pathname}`
+      }
+    })
     this.reporter = props?.reporter ?? new ReporterBuilder(this.config.options)
   }
 
-  private createLighthouseReport (lighthouseResult: any) {
-    console.log(chalk.yellow('SaveReport Start'))
-    this.reporter.saveReport(lighthouseResult.report)
-    console.log(chalk.yellow('SaveReport End'))
-
-    console.log(chalk.yellow('CreateCustomReport Start'))
-    const customReport = Object.values(WptTestFieldType).reduce((obj, value) => {
-      const auditedFields = this.auditor.getTestFieldList(value)
-      const result = this.reporter.createReport(
-        lighthouseResult.lhr.audits,
-        value,
-        auditedFields
-      )
-      return {
-        ...obj,
-        ...result
-      }
-    }, {})
-    console.log(customReport)
-    console.log(chalk.yellow('CreateCustomReport End'))
+  private async createLighthouseReport (lighthouseResult: any, auditPath: WptAuditPathQueueItem) {
+    console.log(chalk.green('Lighthouse report - Start'))
+    this.reporter.saveReportFile(
+      lighthouseResult.report,
+      auditPath.name
+    )
+    await this.reporter.createAuditsReport(lighthouseResult.lhr.audits)
+    console.log(chalk.green('Lighthouse report - Start'))
   }
 
-  private async runLighthouse (url: string, options: WptLighthouseConfigProps, config = null) {
-    const result = await lighthouse(url, options, config)
-    console.log('@@@', result)
-    return result
-  }
-
-  private async runPathnames (
-    pathnames: string[] | undefined,
-    options: WptLighthouseConfigProps,
-    config = null,
-    currentIndex = 0
-  ): Promise<boolean> {
-    if (!Array.isArray(pathnames)) {
-      return true
-    }
-    if (pathnames.length - 1 < currentIndex) {
-      return true
-    }
-
-    const { origin } = this.config
-    const route = pathnames[currentIndex]
-    const targetUrl = `${origin}${route}`
-    await this.runLighthouse(targetUrl, options, config)
-    return await this.runPathnames(pathnames, options, config, currentIndex + 1)
-  }
-
-  private async launchChromeLighthouse (
-    origin: string,
-    options: WptLighthouseConfigProps,
-    config = null
-  ) {
-    const { pathnames } = this.config
-    const chrome = await launch({ chromeFlags: options.chromeFlags, port: options.port })
-
-    const result = await this.runLighthouse(origin, options, config)
-    this.createLighthouseReport(result)
-    const isDone = await this.runPathnames(pathnames, options, config)
-    if (isDone) {
+  private async runLighthouse (auditPath: WptAuditPathQueueItem, index: number, options: WptConfig['options']) {
+    const chrome = await launch({
+      chromeFlags: options.chromeFlags,
+      port: options.port + index
+    })
+    try {
+      const lighthouseResult = await lighthouse(auditPath.url, {
+        ...options,
+        screenEmulation: options.formFactor === 'desktop' && constants.ScreenEmulationMetrics.desktop,
+        maxWaitForLoad: this.config.timeout,
+        port: options.port + index
+      })
+      await this.createLighthouseReport(lighthouseResult, auditPath)
+    } catch (error) {
+      console.log(chalk.red('lighthouse was failed', auditPath.name))
+      console.log(chalk.red(error))
+    } finally {
       chrome.kill()
     }
   }
 
+  private async processTaskQueue (): Promise<boolean> {
+    if (!this.auditPathsQueue.length) {
+      return true
+    }
+
+    const { concurrency, options } = this.config
+    const processingAuditPaths = this.auditPathsQueue.splice(0, concurrency)
+    await Promise.all(processingAuditPaths.map((auditPath, i) => this.runLighthouse(auditPath, i, options)))
+    return await this.processTaskQueue()
+  }
+
   async run () {
-    const { origin, options } = this.config
-    await this.launchChromeLighthouse(origin, options || {})
+    try {
+      const isDone = await this.processTaskQueue()
+      if (isDone) {
+        console.log(chalk.green('All test tasks were finished'))
+      }
+    } catch (error) {
+      console.log(chalk.red(error))
+    }
   }
 }
 
