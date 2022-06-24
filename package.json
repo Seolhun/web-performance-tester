@@ -34,7 +34,7 @@
     "chalk": "^5.0.0",
     "chrome-launcher": "^0.15.0",
     "dayjs": "^1.10.6",
-    "lighthouse": "^9.1.0",
+    "lighthouse": "^9.3.0",
     "mkdirp": "^1.0.4",
     "request": "^2.88.2",
     "rimraf": "^3.0.2"
