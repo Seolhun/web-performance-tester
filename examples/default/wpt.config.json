@@ -5,22 +5,6 @@
     {
       "name": "wpt",
       "pathname": "/web-performance-tester"
-    },
-    {
-      "name": "memory-form",
-      "pathname": "/memory-form"
-    },
-    {
-      "name": "editor.js",
-      "pathname": "/editor.js"
-    },
-    {
-      "name": "cache",
-      "pathname": "/cache"
-    },
-    {
-      "name": "localize-components",
-      "pathname": "/localize-components"
     }
   ],
   "timeout": 20000,
