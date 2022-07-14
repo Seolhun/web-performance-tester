@@ -31,7 +31,6 @@
     "dist"
   ],
   "dependencies": {
-    "chalk": "^5.0.0",
     "chrome-launcher": "^0.15.0",
     "dayjs": "^1.10.6",
     "lighthouse": "^9.2.0",

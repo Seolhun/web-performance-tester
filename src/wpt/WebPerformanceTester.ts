@@ -1,7 +1,6 @@
 // @ts-ignore
 import lighthouse from 'lighthouse'
 import { launch } from 'chrome-launcher'
-import chalk from 'chalk'
 
 import {
   IReporterBuilder,
@@ -36,13 +35,13 @@ class WebPerformanceTester {
   }
 
   private async createLighthouseReport (lighthouseResult: any, auditPath: WptAuditPathQueueItem) {
-    console.log(chalk.green('Lighthouse report - Start'))
+    console.log('Lighthouse report - Start')
     this.reporter.saveReportFile(
       lighthouseResult.report,
       auditPath.name
     )
     await this.reporter.createAuditsReport(lighthouseResult.lhr.audits)
-    console.log(chalk.green('Lighthouse report - End'))
+    console.log('Lighthouse report - End')
   }
 
   private async runLighthouse (auditPath: WptAuditPathQueueItem, index: number, options: WptConfig['options']) {
@@ -59,8 +58,8 @@ class WebPerformanceTester {
       })
       await this.createLighthouseReport(lighthouseResult, auditPath)
     } catch (error) {
-      console.log(chalk.red('lighthouse was failed', auditPath.name))
-      console.log(chalk.red(error))
+      console.log('lighthouse was failed', auditPath.name)
+      console.log(error)
     } finally {
       chrome.kill()
     }
@@ -81,10 +80,10 @@ class WebPerformanceTester {
     try {
       const isDone = await this.processTaskQueue()
       if (isDone) {
-        console.log(chalk.green('All test tasks were finished'))
+        console.log('All test tasks were finished')
       }
     } catch (error) {
-      console.log(chalk.red(error))
+      console.log(error)
     }
   }
 }
