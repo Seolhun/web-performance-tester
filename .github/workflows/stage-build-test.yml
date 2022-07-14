@@ -1,8 +1,8 @@
-name: Dev Test & Build
+name: Stage Build
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
     paths-ignore:
       - '**/*.md'
 
@@ -33,9 +33,3 @@ jobs:
       - name: Build
         if: ${{ always() }}
         run: npm run build
-
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: github-builds
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
