@@ -33,8 +33,8 @@
   "dependencies": {
     "chalk": "^5.0.0",
     "chrome-launcher": "^0.15.0",
-    "dayjs": "^1.10.6",
-    "lighthouse": "^9.1.0",
+    "dayjs": "^1.11.3",
+    "lighthouse": "^9.2.0",
     "mkdirp": "^1.0.4",
     "request": "^2.88.2",
     "rimraf": "^3.0.2"
@@ -51,7 +51,7 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-promise": "^6.0.0",
     "jest": "^27.3.1",
     "jest-cli": "^27.3.1",
     "jest-config": "^27.3.1",
