@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Packages
         if: ${{ always() }}
-        run: npm ci
+        run: npm i
 
       - name: Lint
         if: ${{ always() }}
