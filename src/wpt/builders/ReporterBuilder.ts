@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import dayjs, { Dayjs } from 'dayjs'
+import chalk from 'chalk'
 
-// import { LighthouseField } from '../models'
 import { WptOutputType } from '../WptConfig'
 import { WptLighthouseConfig, WptLighthouseConfigProps } from '../configs'
 
@@ -30,7 +30,9 @@ class ReporterBuilder implements IReporterBuilder {
     )
   }
 
-  async createAuditsReport (_lighthouseAudits: any) {}
+  async createAuditsReport (_lighthouseAudits: any) {
+    console.log(chalk.green('createAuditsReport'))
+  }
 
   saveReportFile (
     lighthouseResult: any,

@@ -42,7 +42,7 @@ class WebPerformanceTester {
       auditPath.name
     )
     await this.reporter.createAuditsReport(lighthouseResult.lhr.audits)
-    console.log(chalk.green('Lighthouse report - Start'))
+    console.log(chalk.green('Lighthouse report - End'))
   }
 
   private async runLighthouse (auditPath: WptAuditPathQueueItem, index: number, options: WptConfig['options']) {
