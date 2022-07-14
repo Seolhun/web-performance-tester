@@ -33,3 +33,7 @@ jobs:
       - name: Build
         if: ${{ always() }}
         run: npm run build
+
+      - name: Local Test
+        if: ${{ always() }}
+        run: npm run lh

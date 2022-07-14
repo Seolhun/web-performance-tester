@@ -34,6 +34,10 @@ jobs:
         if: ${{ always() }}
         run: npm run build
 
+      - name: Local Test
+        if: ${{ always() }}
+        run: npm run lh
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
