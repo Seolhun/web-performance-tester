@@ -27,7 +27,7 @@ jobs:
         if: ${{ always() }}
         run: npm ci
 
-      - name: Test
+      - name: Lint
         if: ${{ always() }}
         run: npm run lint
 
