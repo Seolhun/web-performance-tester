@@ -33,7 +33,7 @@
   "dependencies": {
     "chrome-launcher": "^0.15.0",
     "dayjs": "^1.11.4",
-    "lighthouse": "^9.2.0",
+    "lighthouse": "^9.6.6",
     "mkdirp": "^1.0.4",
     "request": "^2.88.2",
     "rimraf": "^3.0.2"
