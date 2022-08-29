@@ -51,7 +51,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^27.3.1",
-    "jest-cli": "^27.3.1",
+    "jest-cli": "^29.0.1",
     "jest-config": "^27.3.1",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.9.1",
