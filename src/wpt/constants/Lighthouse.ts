@@ -9,8 +9,8 @@ const MOTOG4_EMULATION_METRICS = {
   // our perf recommendations.
   // https://github.com/GoogleChrome/lighthouse/issues/10741#issuecomment-626903508
   deviceScaleFactor: 2.625,
-  disabled: false
-}
+  disabled: false,
+};
 
 /**
  * Desktop metrics adapted from emulated_devices/module.json
@@ -21,10 +21,10 @@ const DESKTOP_EMULATION_METRICS = {
   width: 1350,
   height: 940,
   deviceScaleFactor: 1,
-  disabled: false
-}
+  disabled: false,
+};
 
 export const ScreenEmulationMetrics = {
   mobile: MOTOG4_EMULATION_METRICS,
-  desktop: DESKTOP_EMULATION_METRICS
-}
+  desktop: DESKTOP_EMULATION_METRICS,
+};

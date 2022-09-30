@@ -1,2 +1,2 @@
-export * from './AuditEnum'
-export * from './Lighthouse'
+export * from './AuditEnum';
+export * from './Lighthouse';

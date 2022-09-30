@@ -1,2 +1,2 @@
-export { default } from './WebPerformanceTester'
-export * from './WebPerformanceTester'
+export { default } from './WebPerformanceTester';
+export * from './WebPerformanceTester';

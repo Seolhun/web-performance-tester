@@ -35,21 +35,21 @@ class LighthouseField implements LighthouseFieldProps {
   warnings?: any;
   details?: LighthouseFieldDetailProps;
 
-  constructor (props: LighthouseFieldProps) {
-    this.id = props?.id
-    this.title = props?.title
-    this.description = props?.description
-    this.score = props?.score
-    this.scoreDisplayMode = props?.scoreDisplayMode
-    this.numericValue = props?.numericValue
-    this.numericUnit = props?.numericUnit
-    this.displayValue = props?.displayValue
-    this.explanation = props?.explanation
-    this.errorMessage = props?.errorMessage
-    this.warnings = props?.warnings
-    this.details = props?.details
+  constructor(props: LighthouseFieldProps) {
+    this.id = props?.id;
+    this.title = props?.title;
+    this.description = props?.description;
+    this.score = props?.score;
+    this.scoreDisplayMode = props?.scoreDisplayMode;
+    this.numericValue = props?.numericValue;
+    this.numericUnit = props?.numericUnit;
+    this.displayValue = props?.displayValue;
+    this.explanation = props?.explanation;
+    this.errorMessage = props?.errorMessage;
+    this.warnings = props?.warnings;
+    this.details = props?.details;
   }
 }
 
-export { LighthouseField }
-export default LighthouseField
+export { LighthouseField };
+export default LighthouseField;

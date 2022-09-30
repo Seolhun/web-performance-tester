@@ -3,9 +3,9 @@ name: Release Drafter
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
     paths-ignore:
-      - '**/*.md'
+      - "**/*.md"
 
 jobs:
   update_release_draft:

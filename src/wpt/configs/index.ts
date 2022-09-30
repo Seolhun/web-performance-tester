@@ -1,1 +1,1 @@
-export * from './WptLighthouseConfig'
+export * from './WptLighthouseConfig';

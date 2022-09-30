@@ -1,10 +1,9 @@
 ---
 name: Enhancement request
 about: Suggest an enhancement idea for this project
-title: ''
-labels: 'Enhancement'
-assignees: 'Seolhun'
-
+title: ""
+labels: "Enhancement"
+assignees: "Seolhun"
 ---
 
 ## Purpose

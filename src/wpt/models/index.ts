@@ -1,1 +1,1 @@
-export * from './lighthouse'
+export * from './lighthouse';

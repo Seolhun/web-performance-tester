@@ -16,6 +16,6 @@
 
 ### Reference (Optional)
 
-_Resolves #bug-issue-number
-_Closes #issue-number
-_Refs #issue-number
+\_Resolves #bug-issue-number
+\_Closes #issue-number
+\_Refs #issue-number

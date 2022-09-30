@@ -1,2 +1,2 @@
-export { default } from './wpt'
-export * from './wpt'
+export { default } from './wpt';
+export * from './wpt';

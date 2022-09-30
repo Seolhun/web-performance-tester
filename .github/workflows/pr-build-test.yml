@@ -2,10 +2,19 @@ name: PR Test & Report
 
 on:
   pull_request:
-    branches: [main, develop, /^release/.*$/, /^feature/.*$/, /^bugfix/.*$/, /^hotfix/.*$/, /^support/.*$/]
+    branches:
+      [
+        main,
+        develop,
+        /^release/.*$/,
+        /^feature/.*$/,
+        /^bugfix/.*$/,
+        /^hotfix/.*$/,
+        /^support/.*$/,
+      ]
     types: [opened, synchronize, reopened]
     paths-ignore:
-      - '**/*.md'
+      - "**/*.md"
 
 jobs:
   build:

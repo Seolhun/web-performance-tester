@@ -1,10 +1,10 @@
-import fs from 'fs'
-import { WptLighthouseConfig, WptLighthouseConfigProps } from './configs'
+import fs from 'fs';
+import { WptLighthouseConfig, WptLighthouseConfigProps } from './configs';
 
 export type WptAuditPath = {
   name: string;
   pathname: string;
-}
+};
 
 export interface WptConfigProps {
   name: string;
@@ -41,28 +41,28 @@ class WptConfig implements WptConfigProps {
   concurrency: number;
   options: WptLighthouseConfig;
 
-  constructor () {
-    const jsonConfigPath = `${process.cwd()}/wpt.config.json`
-    const configString = fs.readFileSync(jsonConfigPath, 'utf8') ?? '{}'
-    const config = JSON.parse(configString) as WptConfigProps
+  constructor() {
+    const jsonConfigPath = `${process.cwd()}/wpt.config.json`;
+    const configString = fs.readFileSync(jsonConfigPath, 'utf8') ?? '{}';
+    const config = JSON.parse(configString) as WptConfigProps;
     if (!config?.name) {
-      throw new Error('name is required')
+      throw new Error('name is required');
     }
     if (!config?.origin) {
-      throw new Error('origin is required')
+      throw new Error('origin is required');
     }
     if (!config?.auditPaths) {
-      throw new Error('auditPaths are required')
+      throw new Error('auditPaths are required');
     }
 
-    this.name = config.name
-    this.origin = config.origin
-    this.auditPaths = config.auditPaths ?? []
-    this.timeout = config.timeout ?? 20000
-    this.concurrency = config.concurrency ?? 1
-    this.options = new WptLighthouseConfig(config.options ?? {})
+    this.name = config.name;
+    this.origin = config.origin;
+    this.auditPaths = config.auditPaths ?? [];
+    this.timeout = config.timeout ?? 20000;
+    this.concurrency = config.concurrency ?? 1;
+    this.options = new WptLighthouseConfig(config.options ?? {});
   }
 }
 
-export { WptConfig }
-export default WptConfig
+export { WptConfig };
+export default WptConfig;
