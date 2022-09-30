@@ -8,7 +8,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "clear": "rm -rf ./dist",
     "build": "tsc",
-    "start": "ts-node src/index.ts",
+    "start": "node src/index.js",
     "test": "jest"
   },
   "main": "dist/index.js",
@@ -20,15 +20,14 @@
     "url": "git+https://github.com/Seolhun/web-performance-tester.git"
   },
   "keywords": [
-    "puppeteer",
+    "typescript",
     "lighthouse",
-    "typescript"
+    "analytics",
+    "web",
+    "performance"
   ],
   "bugs": {
     "url": "https://github.com/Seolhun/web-performance-tester/issues"
   },
-  "homepage": "https://github.com/Seolhun/web-performance-tester#readme",
-  "devDependencies": {
-    "ts-node": "^10.0.0"
-  }
+  "homepage": "https://github.com/Seolhun/web-performance-tester#readme"
 }

@@ -3,7 +3,7 @@
   "origin": "https://github.com/Seolhun",
   "auditPaths": [
     {
-      "name": "wpt",
+      "name": "web-performance-tester",
       "pathname": "/web-performance-tester"
     }
   ],
@@ -11,7 +11,7 @@
   "options": {
     "chromeFlags": ["--headless"],
     "formFactor": "desktop",
-    "output": "html",
+    "output": "json",
     "outputPath": "reports",
     "port": 8000
   }
