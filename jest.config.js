@@ -1,16 +1,13 @@
 module.exports = {
-  preset: 'babel-jest',
-  globalSetup: './src/__config__/SetupPuppeteer.js',
-  testEnvironment: './src/__config__/SetupPuppeteerEnvironment.js',
-  globalTeardown: './src/__config__/Teardown.js',
+  preset: 'ts-jest',
   rootDir: '.',
   transform: {
-    '^.+\\.ts?(x)$': 'babel-jest',
+    '^.+\\.ts?(x)$': 'ts-jest',
     '^.+\\.js?(x)$': 'jest',
   },
   testMatch: [
-    '<rootDir>/src/__test__/**/*.(test|spec).ts?(x)',
-    '<rootDir>/src/__test__/**/*.(test|spec).js?(x)',
+    '<rootDir>/src/**/*.(test|spec).ts?(x)',
+    '<rootDir>/src/**/*.(test|spec).js?(x)',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
