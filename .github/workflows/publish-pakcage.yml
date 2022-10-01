@@ -1,10 +1,10 @@
 # see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-name: Github Publish Package
+name: Publish Package at Github Registry
 
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   build-publish:
@@ -14,21 +14,23 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@ejnkr"
-
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@seolhun"
+
+      - name: Install
         run: npm i
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
 
       - name: Publish package
         run: npm publish
