@@ -1,2 +1,3 @@
 export * from './Reporter.types';
-export * from './Reporter';
+export * from './writeAuditsReportJsonFile';
+export * from './writeResultReportFile';

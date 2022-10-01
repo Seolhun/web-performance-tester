@@ -34,8 +34,8 @@ Read lighthouse contents, [Here](https://developer.chrome.com/docs/lighthouse/ov
       "pathname": "/web-performance-tester"
     }
   }],                                       // Required                        
-  "timeout": 20000,                         // default : 20000
-  "concurrency": 1,                         // default : 1
+  "timeout": 30000,                         // default : 30000
+  "useReporter": true,                      // default : true
   "options": {
     "chromeFlags": ["--headless"],          // default : ["--headless"]  - ["--show-paint-rects", "--headless", "--disable-gpu"]
     "formFactor": "desktop",                // default : "mobile"       - desktop, mobile

@@ -1,13 +1,9 @@
 import fs from 'fs';
+import { WptAuditPath } from '../Wpt.types';
 import {
   WptLighthouseConfig,
   WptLighthouseConfigProps,
 } from './Wpt.LighthouseConfig';
-
-export interface WptAuditPath {
-  name: string;
-  pathname: string;
-}
 
 export interface WptConfigProps {
   name: string;
@@ -20,6 +16,12 @@ export interface WptConfigProps {
    * @default 30000
    */
   timeout?: number;
+
+  /**
+   * @default true
+   * Whether to use the default "Wpt" reporter system.
+   */
+  useReporter?: boolean;
 
   /**
    * @see https://github.com/GoogleChrome/lighthouse/issues/7187#issuecomment-569133443
@@ -42,6 +44,7 @@ class WptConfig implements WptConfigProps {
   origin: string;
   auditPaths: WptAuditPath[];
   timeout: number;
+  useReporter: boolean;
   concurrency: number;
   options: WptLighthouseConfig;
 
@@ -49,20 +52,21 @@ class WptConfig implements WptConfigProps {
     const jsonConfigPath = `${process.cwd()}/wpt.config.json`;
     const configString = fs.readFileSync(jsonConfigPath, 'utf-8') ?? '{}';
     const config = JSON.parse(configString) as WptConfigProps;
+
     if (!config?.name) {
       throw new Error('name is required');
     }
     if (!config?.origin) {
       throw new Error('origin is required');
     }
-    if (!config?.auditPaths) {
+    if (!Array.isArray(config?.auditPaths) || config?.auditPaths.length === 0) {
       throw new Error('auditPaths are required');
     }
-
     this.name = config.name;
     this.origin = config.origin;
     this.auditPaths = config.auditPaths ?? [];
     this.timeout = config.timeout ?? 30000;
+    this.useReporter = config.useReporter ?? true;
     this.concurrency = config.concurrency ?? 1;
     this.options = new WptLighthouseConfig(config.options ?? {});
   }

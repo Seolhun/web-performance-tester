@@ -1,5 +1,4 @@
 import { WptContextValue } from './context';
-import { WptAuditPathItem } from './Wpt';
 
 export interface WptErrorEvent {
   error: Error;
@@ -27,4 +26,13 @@ export interface WptEventHandlersEventMap {
   onErrorLighthouse: WptLighthouseEvent & WptErrorEvent;
   onReportStart: WptReportEvent;
   onReportEnd: WptReportEvent;
+}
+
+export interface WptAuditPath {
+  name: string;
+  pathname: string;
+}
+
+export interface WptAuditPathItem extends WptAuditPath {
+  url: string;
 }

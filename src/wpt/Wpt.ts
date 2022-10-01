@@ -4,31 +4,20 @@ import { launch } from 'chrome-launcher';
 import { pipe, concurrent, toAsync, toArray, map } from '@fxts/core';
 import EventEmitter from 'events';
 
-import { Reporter } from './tools';
-import { WptContext, WptConfig, WptAuditPath } from './context';
+import { WptContext, WptConfig } from './context';
 import * as constants from './constants';
-import { WptEventHandlersEventMap } from './Wpt.types';
-
-export interface WebPerformanceTesterProps {
-  reporter?: Reporter;
-}
-
-export interface WptAuditPathItem extends WptAuditPath {
-  url: string;
-}
+import { WptAuditPathItem, WptEventHandlersEventMap } from './Wpt.types';
+import { writeAuditsReportJsonFile, writeResultReportFile } from './tools';
 
 const context = WptContext();
 
 class WebPerformanceTester extends EventEmitter {
-  private reporter: Reporter;
-
-  constructor(props?: WebPerformanceTesterProps) {
+  constructor() {
     super();
-    this.reporter = props?.reporter ?? new Reporter();
-    this.typedEmit('onReadyWpt', { context });
+    this._emit('onReadyWpt', { context });
   }
 
-  private typedEmit(
+  private _emit(
     eventName: keyof WptEventHandlersEventMap,
     eventArgs: WptEventHandlersEventMap[keyof WptEventHandlersEventMap],
   ) {
@@ -39,10 +28,12 @@ class WebPerformanceTester extends EventEmitter {
     lighthouseResult: RunnerResult,
     auditPath: WptAuditPathItem,
   ) {
-    this.typedEmit('onReportStart', { auditPath, context });
-    this.reporter.saveAuditsReportFile(lighthouseResult.report, auditPath.name);
-    await this.reporter.createAuditsReport(lighthouseResult.lhr.audits);
-    this.typedEmit('onReportEnd', { auditPath, context });
+    if (context.config.useReporter) {
+      this._emit('onReportStart', { auditPath, context });
+      writeResultReportFile(lighthouseResult.report, auditPath.name);
+      writeAuditsReportJsonFile(lighthouseResult.lhr.audits, auditPath.name);
+      this._emit('onReportEnd', { auditPath, context });
+    }
   }
 
   private async runLighthouse(
@@ -55,22 +46,21 @@ class WebPerformanceTester extends EventEmitter {
       port: options.port + index,
     });
     try {
-      this.typedEmit('onStartedLighthouse', { auditPath, context });
+      this._emit('onStartedLighthouse', { auditPath, context });
+      const isDesktop = options.formFactor === 'desktop';
       const lighthouseResult: RunnerResult = await lighthouse(auditPath.url, {
         ...options,
-        screenEmulation:
-          options.formFactor === 'desktop' &&
-          constants.ScreenEmulationMetrics.desktop,
+        screenEmulation: isDesktop && constants.ScreenEmulationMetrics.desktop,
         maxWaitForLoad: context.config.timeout,
         port: options.port + index,
       });
       await this.createLighthouseReport(lighthouseResult, auditPath);
-      this.typedEmit('onFinishedLighthouse', { auditPath, context });
+      this._emit('onFinishedLighthouse', { auditPath, context });
     } catch (error) {
       if (error instanceof Error) {
-        this.typedEmit('onErrorLighthouse', { auditPath, context, error });
+        this._emit('onErrorLighthouse', { auditPath, context, error });
       } else {
-        this.typedEmit('onErrorLighthouse', { auditPath, context });
+        this._emit('onErrorLighthouse', { auditPath, context });
       }
     } finally {
       chrome.kill();
@@ -79,7 +69,7 @@ class WebPerformanceTester extends EventEmitter {
 
   async run() {
     try {
-      this.typedEmit('onStartedWpt', { context });
+      this._emit('onStartedWpt', { context });
       let index = 0;
       const { concurrency, options } = context.config;
       await pipe(
@@ -92,12 +82,12 @@ class WebPerformanceTester extends EventEmitter {
         concurrent(concurrency),
         (values) => toArray(values),
       );
-      this.typedEmit('onFinishedWpt', { context });
+      this._emit('onFinishedWpt', { context });
     } catch (error) {
       if (error instanceof Error) {
-        this.typedEmit('onErrorWpt', { context, error });
+        this._emit('onErrorWpt', { context, error });
       } else {
-        this.typedEmit('onErrorWpt', { context });
+        this._emit('onErrorWpt', { context });
       }
     }
   }

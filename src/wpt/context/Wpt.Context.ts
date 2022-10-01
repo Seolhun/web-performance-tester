@@ -1,6 +1,6 @@
 import { pipe, map, toArray } from '@fxts/core';
 
-import { WptAuditPathItem } from '../Wpt';
+import { WptAuditPathItem } from '../Wpt.types';
 import { WptConfig } from './Wpt.Config';
 import { WptLighthouseConfig } from './Wpt.LighthouseConfig';
 
