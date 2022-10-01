@@ -1,4 +1,4 @@
-import { WptOutputType } from '../WptConfig';
+import { WptOutputType } from './Wpt.Config';
 
 export type ChromeFlagType =
   | '--headless'
@@ -19,7 +19,7 @@ export interface WptLighthouseConfigProps {
   formFactor?: FormFactorType;
 
   /**
-   * @default html
+   * @default json
    */
   output?: WptOutputType;
 
@@ -47,7 +47,7 @@ class WptLighthouseConfig implements WptLighthouseConfigProps {
   constructor(props?: WptLighthouseConfigProps) {
     this.chromeFlags = props?.chromeFlags ?? ['--headless'];
     this.formFactor = props?.formFactor ?? 'desktop';
-    this.output = props?.output ?? 'html';
+    this.output = props?.output ?? 'json';
     this.outputPath = props?.outputPath ?? './reports';
     this.port = props?.port ?? 8080;
   }

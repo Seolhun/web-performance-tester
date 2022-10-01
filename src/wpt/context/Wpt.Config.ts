@@ -1,10 +1,13 @@
 import fs from 'fs';
-import { WptLighthouseConfig, WptLighthouseConfigProps } from './configs';
+import {
+  WptLighthouseConfig,
+  WptLighthouseConfigProps,
+} from './Wpt.LighthouseConfig';
 
-export type WptAuditPath = {
+export interface WptAuditPath {
   name: string;
   pathname: string;
-};
+}
 
 export interface WptConfigProps {
   name: string;
@@ -43,7 +46,7 @@ class WptConfig implements WptConfigProps {
 
   constructor() {
     const jsonConfigPath = `${process.cwd()}/wpt.config.json`;
-    const configString = fs.readFileSync(jsonConfigPath, 'utf8') ?? '{}';
+    const configString = fs.readFileSync(jsonConfigPath, 'utf-8') ?? '{}';
     const config = JSON.parse(configString) as WptConfigProps;
     if (!config?.name) {
       throw new Error('name is required');
