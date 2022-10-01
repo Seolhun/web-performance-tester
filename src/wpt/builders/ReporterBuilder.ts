@@ -1,52 +1,67 @@
 import fs from 'fs';
 import path from 'path';
 import dayjs, { Dayjs } from 'dayjs';
+import { Result as AuditResult } from 'lighthouse/types/lhr/audit-result';
+import { pipe, filter, join } from '@fxts/core';
 
-import { WptOutputType } from '../WptConfig';
-import { WptLighthouseConfig, WptLighthouseConfigProps } from '../configs';
+import { WptOutputType } from '../context/Wpt.Config';
+import { WptContext } from '../context';
+
+const context = WptContext();
 
 export interface IReporterBuilder {
-  createAuditsReport: (lighthouseAudits: any) => Promise<void>;
-  saveReportFile: (
-    lighthouseResult: any,
+  createAuditsReport: (
+    lighthouseAudits: Record<string, AuditResult>,
+  ) => Promise<void>;
+  saveAuditsReportFile: (
+    lighthouseResultReport: string | string[],
     reportFileName: string,
     type?: WptOutputType,
   ) => void;
 }
 
 class ReporterBuilder implements IReporterBuilder {
-  private lighthouseConfig: WptLighthouseConfig;
   private reportAt: Dayjs;
   private directoryPath: string;
 
-  constructor(lighthouseConfig: WptLighthouseConfigProps) {
-    this.lighthouseConfig = new WptLighthouseConfig(lighthouseConfig);
+  constructor() {
     this.reportAt = dayjs();
     this.directoryPath = path.resolve(
       process.cwd(),
-      this.lighthouseConfig.outputPath,
-      this.reportAt.format('YY-MM-DD_HH:mm'),
+      context.lighthouseConfig.outputPath,
     );
   }
 
-  async createAuditsReport(_lighthouseAudits: any) {
-    console.log('createAuditsReport');
-  }
+  private createDirectoryPath(directoryName: string) {
+    const targetDirectoryPath = pipe(
+      [this.directoryPath, directoryName],
+      filter((value) => value),
+      join('/'),
+    );
 
-  saveReportFile(
-    lighthouseResult: any,
-    reportFileName: string,
-    type: WptOutputType = this.lighthouseConfig.output,
-  ) {
-    if (!fs.existsSync(this.directoryPath)) {
-      fs.mkdirSync(this.directoryPath, { recursive: true });
+    if (!fs.existsSync(targetDirectoryPath)) {
+      fs.mkdirSync(targetDirectoryPath, { recursive: true });
     }
 
-    fs.writeFileSync(
-      `${this.directoryPath}/${reportFileName}.${type}`,
-      lighthouseResult,
-      'utf8',
-    );
+    return targetDirectoryPath;
+  }
+
+  async createAuditsReport(_lighthouseAudits: Record<string, AuditResult>) {
+    console.log(_lighthouseAudits);
+  }
+
+  saveAuditsReportFile(
+    lighthouseResultReport: string | string[],
+    directoryName = '',
+  ) {
+    const targetDirectoryPath = this.createDirectoryPath(directoryName);
+
+    const outputName = this.reportAt.format('YY-MM-DD_HH:mm');
+    const outputType = context.lighthouseConfig.output;
+    const reportFile = `${outputName}.${outputType}`;
+    const targetPath = pipe([targetDirectoryPath, reportFile], join('/'));
+
+    fs.writeFileSync(targetPath, `${lighthouseResultReport}`, 'utf-8');
   }
 }
 
