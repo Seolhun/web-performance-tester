@@ -1,10 +1,10 @@
-name: Dev Test & Build
+name: Build - Stage
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
     paths-ignore:
-      - "**/*.md"
+      - '**/*.md'
 
 jobs:
   build:
@@ -15,16 +15,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Packages
+      - name: Install
         if: ${{ always() }}
-        run: npm i
+        run: npm install
 
       - name: Lint
         if: ${{ always() }}
@@ -37,9 +37,3 @@ jobs:
       - name: Local Test
         if: ${{ always() }}
         run: npm run lh
-
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: github-builds
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

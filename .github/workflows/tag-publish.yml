@@ -26,16 +26,15 @@ jobs:
 
       - name: Install dependencies
         run: npm i
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: npm run build
 
       - name: Publish package
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: dev-travis
+          SLACK_CHANNEL: github-builds
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
