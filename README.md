@@ -9,10 +9,13 @@ This is automation performance tester using lighthouse and chrome-launcher
 
 ## About Lighthouse contents
 
-- [Accessibility](https://github.com/Seolhun/web-performance-tester/blob/master/.content/Accessibility.md)
-- [BestPractices](https://github.com/Seolhun/web-performance-tester/blob/master/.content/BestPractices.md)
-- [Performance](https://github.com/Seolhun/web-performance-tester/blob/master/.content/Performance.md)
-- [ProgressiveWeb](https://github.com/Seolhun/web-performance-tester/blob/master/.content/ProgressiveWeb.md)
+Read lighthouse contents, [Here](https://developer.chrome.com/docs/lighthouse/overview/)
+
+- [Performance](https://developer.chrome.com/docs/lighthouse/performance/)
+- [Accessibility](https://developer.chrome.com/docs/lighthouse/accessibility/)
+- [BestPractices](https://developer.chrome.com/docs/lighthouse/best-practices/)
+- [SEO](https://developer.chrome.com/docs/lighthouse/seo/)
+- [ProgressiveWeb](https://developer.chrome.com/docs/lighthouse/pwa/)
 
 ## Config Options
 
@@ -23,9 +26,14 @@ This is automation performance tester using lighthouse and chrome-launcher
 ```js
 // wpt.config.json
 {
-  "name": ""                                // Required
-  "origin": "",                             // Required
-  "auditPaths": [],                         // Required
+  "name": "Seolhun_Github"                  // Required
+  "origin": "https://github.com/Seolhun",   // Required
+  "auditPaths": [{
+    {
+      "name": "web-performance-tester",
+      "pathname": "/web-performance-tester"
+    }
+  }],                                       // Required                        
   "timeout": 20000,                         // default : 20000
   "concurrency": 1,                         // default : 1
   "options": {
@@ -52,12 +60,7 @@ npm install
 npm run build
 ```
 
-### Run
-
-```bash
-npm run lh
-```
-
 ### Codes
 
 - Examples Code [here](https://github.com/Seolhun/web-performance-tester/tree/master/examples)
+- See [Default Example](https://github.com/Seolhun/web-performance-tester/tree/develop/examples/default)!
