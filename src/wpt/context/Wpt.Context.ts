@@ -5,8 +5,9 @@ import { WptConfig } from './Wpt.Config';
 import { WptLighthouseConfig } from './Wpt.LighthouseConfig';
 
 export interface WptContextValue {
-  config: WptConfig;
-  auditPathsItems: WptAuditPathItem[];
+  config: Readonly<WptConfig>;
+  auditPathsItems: Readonly<WptAuditPathItem[]>;
+  lighthouseConfig: Readonly<WptLighthouseConfig>;
 }
 
 enum WptContextStatus {
@@ -46,16 +47,11 @@ function createWptContext() {
     initialize();
   }
 
-  function reinitialize() {
-    initialize();
-  }
-
-  return () => {
+  return (): WptContextValue => {
     return {
       config,
       auditPathsItems,
       lighthouseConfig,
-      reinitialize,
     };
   };
 }
