@@ -1,18 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import dayjs, { Dayjs } from 'dayjs';
-import { Result as AuditResult } from 'lighthouse/types/lhr/audit-result';
 import { pipe, filter, join } from '@fxts/core';
 
-import { WptOutputType } from '../context/Wpt.Config';
-import { WptContext } from '../context';
+import { WptOutputType, WptContext } from '../../context';
+import { WptLightAuditResult } from './Reporter.types';
+import { aggregate } from '../../../statistics';
 
 const context = WptContext();
 
-export interface IReporterBuilder {
-  createAuditsReport: (
-    lighthouseAudits: Record<string, AuditResult>,
-  ) => Promise<void>;
+export interface IReporter {
+  createAuditsReport: (lighthouseAudits: WptLightAuditResult) => Promise<void>;
   saveAuditsReportFile: (
     lighthouseResultReport: string | string[],
     reportFileName: string,
@@ -20,7 +18,7 @@ export interface IReporterBuilder {
   ) => void;
 }
 
-class ReporterBuilder implements IReporterBuilder {
+class Reporter implements IReporter {
   private reportAt: Dayjs;
   private directoryPath: string;
 
@@ -32,7 +30,7 @@ class ReporterBuilder implements IReporterBuilder {
     );
   }
 
-  private createDirectoryPath(directoryName: string) {
+  private makeDirectories(directoryName: string) {
     const targetDirectoryPath = pipe(
       [this.directoryPath, directoryName],
       filter((value) => value),
@@ -46,24 +44,29 @@ class ReporterBuilder implements IReporterBuilder {
     return targetDirectoryPath;
   }
 
-  async createAuditsReport(_lighthouseAudits: Record<string, AuditResult>) {
-    console.log(_lighthouseAudits);
+  private writeReportFile(path: string, data: string | NodeJS.ArrayBufferView) {
+    fs.writeFileSync(path, data, 'utf-8');
+  }
+
+  async createAuditsReport(lighthouseAudits: WptLightAuditResult) {
+    console.debug(lighthouseAudits);
+    aggregate(lighthouseAudits);
   }
 
   saveAuditsReportFile(
     lighthouseResultReport: string | string[],
     directoryName = '',
   ) {
-    const targetDirectoryPath = this.createDirectoryPath(directoryName);
+    const targetDirectoryPath = this.makeDirectories(directoryName);
 
     const outputName = this.reportAt.format('YY-MM-DD_HH:mm');
     const outputType = context.lighthouseConfig.output;
     const reportFile = `${outputName}.${outputType}`;
     const targetPath = pipe([targetDirectoryPath, reportFile], join('/'));
 
-    fs.writeFileSync(targetPath, `${lighthouseResultReport}`, 'utf-8');
+    this.writeReportFile(targetPath, `${lighthouseResultReport}`);
   }
 }
 
-export { ReporterBuilder };
-export default ReporterBuilder;
+export { Reporter };
+export default Reporter;

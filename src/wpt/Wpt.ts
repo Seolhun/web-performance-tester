@@ -1,14 +1,14 @@
 import lighthouse from 'lighthouse';
 import { RunnerResult } from 'lighthouse/types/externs';
 import { launch } from 'chrome-launcher';
-import { pipe, concurrent, toAsync, toArray } from '@fxts/core';
+import { pipe, concurrent, toAsync, toArray, map } from '@fxts/core';
 
-import { ReporterBuilder } from './builders';
+import { Reporter } from './tools';
 import { WptContext, WptConfig, WptAuditPath } from './context';
 import * as constants from './constants';
 
 export interface WebPerformanceTesterProps {
-  reporter?: ReporterBuilder;
+  reporter?: Reporter;
 }
 
 export interface WptAuditPathItem extends WptAuditPath {
@@ -18,20 +18,20 @@ export interface WptAuditPathItem extends WptAuditPath {
 const context = WptContext();
 
 class WebPerformanceTester {
-  private reporter: ReporterBuilder;
+  private reporter: Reporter;
 
   constructor(props?: WebPerformanceTesterProps) {
-    this.reporter = props?.reporter ?? new ReporterBuilder();
+    this.reporter = props?.reporter ?? new Reporter();
   }
 
   private async createLighthouseReport(
     lighthouseResult: RunnerResult,
     auditPath: WptAuditPathItem,
   ) {
-    console.log(`Reporter:start - ${auditPath.name}`);
+    console.log(`Reporter:start - "${auditPath.name}"`);
     this.reporter.saveAuditsReportFile(lighthouseResult.report, auditPath.name);
     await this.reporter.createAuditsReport(lighthouseResult.lhr.audits);
-    console.log(`Reporter:success - ${auditPath.name}`);
+    console.log(`Reporter:success - "${auditPath.name}"`);
   }
 
   private async runLighthouse(
@@ -44,7 +44,7 @@ class WebPerformanceTester {
       port: options.port + index,
     });
     try {
-      console.log(`Lighthouse:start - ${auditPath.name}`);
+      console.log(`Lighthouse:start - "${auditPath.name}"`);
       const lighthouseResult: RunnerResult = await lighthouse(auditPath.url, {
         ...options,
         screenEmulation:
@@ -54,9 +54,11 @@ class WebPerformanceTester {
         port: options.port + index,
       });
       await this.createLighthouseReport(lighthouseResult, auditPath);
-      console.log(`Lighthouse:success - Finish the ${auditPath.name} wpt test`);
+      console.log(
+        `Lighthouse:success - Finish the "${auditPath.name}" wpt test`,
+      );
     } catch (error) {
-      console.error(`Lighthouse:fail - ${auditPath.name}`);
+      console.error(`Lighthouse:fail - "${auditPath.name}"`);
       console.error('Lighthouse:fail - ', error);
     } finally {
       chrome.kill();
@@ -65,16 +67,17 @@ class WebPerformanceTester {
 
   async run() {
     try {
+      let index = 0;
+
       console.log('Run:start');
       const { concurrency, options } = context.config;
       await pipe(
         context.auditPathsItems,
-        (auditPathsItems) => {
-          return auditPathsItems.map((auditPath, i) => {
-            return this.runLighthouse(auditPath, i, options);
-          });
-        },
         toAsync,
+        map((auditPath) => {
+          index += 1;
+          return this.runLighthouse(auditPath, index, options);
+        }),
         concurrent(concurrency),
         (values) => toArray(values),
       );

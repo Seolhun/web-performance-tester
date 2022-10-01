@@ -17,13 +17,14 @@ export interface WptConfigProps {
   auditPaths: WptAuditPath[];
 
   /**
-   * @default 20000
+   * @default 30000
    */
   timeout?: number;
 
   /**
+   * @see https://github.com/GoogleChrome/lighthouse/issues/7187#issuecomment-569133443
    * @default 1
-   * Current concurrency has error because of lighthouse concurrency
+   * @todo Current concurrency has error because of lighthouse concurrency
    * ! SyntaxError: The "start lh:gather:loadPage-offlinePass" performance mark has not been set
    */
   concurrency?: number;
@@ -61,7 +62,7 @@ class WptConfig implements WptConfigProps {
     this.name = config.name;
     this.origin = config.origin;
     this.auditPaths = config.auditPaths ?? [];
-    this.timeout = config.timeout ?? 20000;
+    this.timeout = config.timeout ?? 30000;
     this.concurrency = config.concurrency ?? 1;
     this.options = new WptLighthouseConfig(config.options ?? {});
   }
