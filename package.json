@@ -16,8 +16,11 @@
     "url": "git+https://github.com/Seolhun/web-performance-tester"
   },
   "keywords": [
+    "typescript",
     "lighthouse",
-    "typescript"
+    "analytics",
+    "web",
+    "performance"
   ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
@@ -33,19 +36,14 @@
     "dist"
   ],
   "dependencies": {
+    "@fxts/core": "^0.10.0",
     "chrome-launcher": "^0.15.1",
     "dayjs": "^1.11.5",
-    "lighthouse": "^9.6.7",
-    "mkdirp": "^1.0.4",
-    "request": "^2.88.2",
-    "rimraf": "^3.0.2"
+    "lighthouse": "^9.6.7"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
-    "@types/mkdirp": "^1.0.2",
     "@types/node": "^18.6.3",
-    "@types/request": "^2.48.7",
-    "@types/rimraf": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "babel-jest": "^27.5.1",
