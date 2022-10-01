@@ -2,6 +2,14 @@
 
 This is automation performance tester using lighthouse and chrome-launcher
 
+## Install
+
+```bash
+npm install @seolhun/web-performance-tester
+# or
+yarn add @seolhun/web-performance-tester
+```
+
 ## Goal
 
 - One configuration, All routes are audited.
@@ -46,7 +54,7 @@ Read lighthouse contents, [Here](https://developer.chrome.com/docs/lighthouse/ov
 }
 ```
 
-## How to
+## How to Development
 
 ### Install
 
@@ -60,7 +68,13 @@ npm install
 npm run build
 ```
 
-### Codes
+### Run example
+
+```bash
+npm run lh
+```
+
+### Examples
 
 - Examples Code [here](https://github.com/Seolhun/web-performance-tester/tree/master/examples)
 - See [Default Example](https://github.com/Seolhun/web-performance-tester/tree/develop/examples/default)!
